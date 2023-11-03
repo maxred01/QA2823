@@ -1,0 +1,17 @@
+Задание 1
+[href="muzyika/"][data-v-cursor-width="10"]
+
+Задание 2
+div[class="relative w-full"]>div>div>div:last-of-type>div>h2
+
+Задание 3
+[href="/websites/404-pages/"]
+
+Задание 4
+div[id="gspb_button-id-gsbp-9332c5bd-3bd3"]>a
+
+Задание 5
+p>div:last-of-type>div>div
+
+Спец задание
+[href*='/local/']
