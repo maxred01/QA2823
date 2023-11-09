@@ -1,0 +1,5 @@
+//div[@class="hby-calculator-settings-item  hby-cpu"]//input[@class="hby-input-number"]
+//input[@id="catalogSearch"]
+//button[@class="hamburger-menu__button"]
+(//button[@class="btn btn-secondary btn-lg col-md-3"])[2]
+//div[@class="homepage-taskbar__wrap"]//button[@aria-label="Search"]
