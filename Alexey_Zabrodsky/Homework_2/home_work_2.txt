@@ -1,0 +1,28 @@
+1.Найти локатор для страницы https://maxkorzh.live/ https://share.cleanshot.com/3PHmYKVd - вкладка музыка
+css
+[style="transition-delay: 0.2s;"] [href="muzyika/"]
+xpath
+(//div[@id="wrap"]//a[@href="muzyika/"])[1]
+2.Найти локатор для станицы https://www.fpp.net/work/ https://share.cleanshot.com/LZDmbQkZ - цифры 2
+css
+div.flex-none:nth-last-child(1) h2.hidden
+xpath
+//h2[contains(text(),'2')]
+3.Найти локатор для страницы https://www.awwwards.com/ https://share.cleanshot.com/y44tLHBP - кнопка 404 pages
+css
+a[href="/websites/404-pages/"]
+xpath
+//div[@id="search-default"]//a[contains(text(),'404')]
+4.Найти локатор для страницы https://www.pttrns.com/ https://share.cleanshot.com/cdv5jCzf - кнопка пробного периода на 3 дня
+css
+div#gspb_button-id-gsbp-9332c5bd-3bd3>a.gspb-buttonbox
+xpath
+//div[@id="gspb_col-id-gsbp-edf90de7-c8f4"]//span[contains(text(),'Start')]
+5.Найти локатор для страницы https://www.davidebaratta.com/ https://share.cleanshot.com/3wsPsDTt - эмоджи
+css
+div#sapper p[style] div.line:last-child div.char
+6.найти CSS-локатор для кнопки "Зарегистрироваться" на сайте hoster.by
+css
+a#registrUser
+7.Hoster.by ссылки
+a[href*="//hoster.by"]:not([href*="//hoster.by/"])
