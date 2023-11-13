@@ -1,0 +1,5 @@
+1. //div[@class="hby-calculator-settings-item  hby-cpu"]//input[@class="hby-input-number"]
+2. // *[@ id='catalogSearch']
+3. //div[@class='hamburger-menu-ui hamburger-menu-ui-23']
+4. (//button[@class="btn btn-secondary btn-lg col-md-3"])[1]
+5.(//button[@class='search-icon'])[1]
