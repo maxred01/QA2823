@@ -1,0 +1,5 @@
+li[style="transition-delay: 0.2s;"]>a
+div.flex-none.flex:nth-of-type(2)>div>h2
+[href="/websites/404-pages/"]
+[class="gspb-buttonbox"]
+p>div.line:last-of-type>div.word>div.char
