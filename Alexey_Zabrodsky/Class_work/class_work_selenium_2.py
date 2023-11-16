@@ -1,7 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
 
 # option = Options()
 # option.add_argument("--window-size=2000,800") #разрешение экрана
