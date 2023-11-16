@@ -29,7 +29,8 @@ driver.quit()
 # print(driver.page_source)
 # print(driver.title)
 # print(driver.current_url)
-# element = driver.find_element(By.XPATH, '(//div[@class="style-scope ytd-rich-item-renderer"])[1]//yt-formatted-string
+# element = driver.find_element(By.XPATH,
+# '(//div[@class="style-scope ytd-rich-item-renderer"])[1]//yt-formatted-string
 # [@id="video-title"]').text
 #
 # print(element)
@@ -116,7 +117,6 @@ driver.quit()
 # driver.get("https://www.yahoo.com/")
 # time.sleep(1)
 #
-#
 # print(driver.page_source)
 # print(driver.title)
 # print(driver.current_url)
@@ -165,7 +165,8 @@ driver.quit()
 # print(driver.page_source)
 # print(driver.title)
 # print(driver.current_url)
-# element = driver.find_element(By.CSS_SELECTOR, 'div#nav-xshop [data-csa-c-slot-id="nav_cs_1"]').text
+# element = driver.find_element(By.CSS_SELECTOR,
+# 'div#nav-xshop [data-csa-c-slot-id="nav_cs_1"]').text
 #
 # print(element)
 #
