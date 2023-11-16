@@ -1,5 +1,3 @@
-import time
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -29,7 +27,7 @@ print(element)
 # print(element)
 # print(element)
 print(driver.title)
-# print(driver.current_url) # проверяет ссылку на действительность
+print(driver.current_url) # Выводит URL
 # print(driver.page_source) # тот же поисковик что и devtools
 
 driver.close() # закрыть все вкладки браузера после тестинга
