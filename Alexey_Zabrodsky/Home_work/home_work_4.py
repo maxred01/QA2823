@@ -1,25 +1,26 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+
 
 driver = webdriver.Chrome()
 driver.maximize_window()
 
 # # ----------------------------------------------------Задание 1
-# driver.get("https://www.google.com/")
-# time.sleep(1)
-#
-#
-# print(driver.page_source)
-# print(driver.title)
-# print(driver.current_url)
-# element = driver.find_element(By.XPATH, "//*[contains(text(),'Сервисы Google')]").text
-#
-# print(element)
-#
-# driver.close()
-# driver.quit()
-#
+driver.get("https://www.google.com/")
+time.sleep(1)
+
+
+print(driver.page_source)
+print(driver.title)
+print(driver.current_url)
+element = driver.find_element(By.XPATH, "//*[contains(text(),'Сервисы Google')]").text
+
+print(element)
+
+driver.close()
+driver.quit()
+
 # # ----------------------------------------------------Задание 2
 # driver.get("https://www.youtube.com/")
 # time.sleep(1)
@@ -28,7 +29,8 @@ driver.maximize_window()
 # print(driver.page_source)
 # print(driver.title)
 # print(driver.current_url)
-# element = driver.find_element(By.XPATH, '(//div[@class="style-scope ytd-rich-item-renderer"])[1]//yt-formatted-string[@id="video-title"]').text
+# element = driver.find_element(By.XPATH, '(//div[@class="style-scope ytd-rich-item-renderer"])[1]//yt-formatted-string
+# [@id="video-title"]').text
 #
 # print(element)
 #
