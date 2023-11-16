@@ -37,5 +37,6 @@ time.sleep(2)
 elements_basket = driver.find_elements(By.XPATH, '//div[@class="domainsTable recom done"]//button[@class="btnBorder redBtn small  toCart gmt-active-to-basket"]')
 for element in elements_basket:
     element.click()
+    time.sleep(1)
 time.sleep(20)
 driver.quit()
