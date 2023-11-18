@@ -1,12 +1,12 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import time
+
 
 driver = webdriver.Chrome()
 
 driver.maximize_window()
 
-keyword = 'itstep'
 print()
 driver.get('https://www.google.com/')
 time.sleep(10)
@@ -15,7 +15,8 @@ print(element)
 print()
 driver.get('https://www.youtube.com/')
 time.sleep(10)
-element = driver.find_element(By.XPATH, '(//div[@class="style-scope ytd-rich-item-renderer"])[1]//yt-formatted-string[@id="video-title"]').text
+element = driver.find_element(By.XPATH, """
+(//div[@class="style-scope ytd-rich-item-renderer"])[1]//yt-formatted-string[@id="video-title"]""").text
 print(element)
 print()
 driver.get('https://www.facebook.com/')
@@ -30,7 +31,9 @@ print(element)
 print()
 driver.get('https://twitter.com/')
 time.sleep(10)
-element = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1nao33i r-fm7h5w r-1yjpyg1 r-b88u0q r-ueyrd6 r-zd98yo r-bcqeeo r-qvutc0"]//span[@class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"]').text
+element = driver.find_element(By.XPATH, """
+//div[@class="css-901oao r-1nao33i r-fm7h5w r-1yjpyg1 r-b88u0q r-ueyrd6 r-zd98yo r-bcqeeo r-qvutc0"]
+//span[@class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0"]""").text
 print(element)
 print()
 driver.get('http://www.baidu.com/')
@@ -70,4 +73,3 @@ time.sleep(2)
 element = driver.find_element(By.CSS_SELECTOR, '[id="login-modal-title"]').text
 print(element)
 driver.quit()
-
