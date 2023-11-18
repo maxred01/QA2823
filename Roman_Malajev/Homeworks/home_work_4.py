@@ -16,7 +16,8 @@ print()
 driver.get('https://www.youtube.com/')
 time.sleep(10)
 element = driver.find_element(By.XPATH, """
-(//div[@class="style-scope ytd-rich-item-renderer"])[1]//yt-formatted-string[@id="video-title"]""").text
+(//div[@class="style-scope ytd-rich-item-renderer"])[1]
+//yt-formatted-string[@id="video-title"]""").text
 print(element)
 print()
 driver.get('https://www.facebook.com/')
@@ -38,7 +39,8 @@ print(element)
 print()
 driver.get('http://www.baidu.com/')
 time.sleep(10)
-element = driver.find_element(By.XPATH, '//li[@data-index="1"]//span[@class="title-content-title"]').text
+element = driver.find_element(By.XPATH, """
+//li[@data-index="1"]//span[@class="title-content-title"]""").text
 print(element)
 print()
 driver.get('https://www.wikipedia.org/')
@@ -53,7 +55,8 @@ print(element)
 print()
 # driver.get('https://yandex.ru/')
 # time.sleep(2)
-# element = driver.find_element(By.XPATH, '(//main//span[@class="card-news-story__text-3F"])[1]').text
+# element = driver.find_element(By.XPATH, """
+# (//main//span[@class="card-news-story__text-3F"])[1]""").text
 # print(element)
 # print()
 driver.get('https://www.whatsapp.com/')
