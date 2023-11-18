@@ -10,7 +10,8 @@ driver.maximize_window()
 
 # driver.get('https://www.onliner.by/')
 # driver.implicitly_wait(5)
-# element_click = driver.find_element(By.CSS_SELECTOR, '[class="auth-bar__item auth-bar__item--text"]').click()
+# element_click = driver.find_element(By.CSS_SELECTOR, """
+# [class="auth-bar__item auth-bar__item--text"]""").click()
 # driver.implicitly_wait(5)
 # element_input = driver.find_element(By.CSS_SELECTOR, """
 # div>div>div>div>div>div>input[class="auth-input auth-input_primary auth-input_base
@@ -34,7 +35,8 @@ driver.maximize_window()
 
 driver.get('https://hoster.by/')
 driver.implicitly_wait(5)
-element_input = driver.find_element(By.CSS_SELECTOR, '[class="m-input m-b1"]').send_keys('sgsssgdfsgfdg')
+element_input = driver.find_element(By.CSS_SELECTOR, """
+[class="m-input m-b1"]""").send_keys('sgsssgdfsgfdg')
 driver.implicitly_wait(5)
 element_click = driver.find_element(By.CSS_SELECTOR, '[class="m-button red"]').click()
 driver.implicitly_wait(5)
