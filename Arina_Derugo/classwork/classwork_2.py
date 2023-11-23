@@ -41,3 +41,5 @@ time.sleep(2)
 # driver.find_element(By.XPATH, "").click()
 element = driver.find_element(By.XPATH, "//button[@class='btnBorder redBtn small  toCart gmt-active-to-basket']").is_displayed()
 assert element == True
+
+driver.save_screenshot()
