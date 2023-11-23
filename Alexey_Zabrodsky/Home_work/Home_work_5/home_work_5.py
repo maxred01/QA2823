@@ -102,9 +102,8 @@ driver.execute_script("window.scrollTo(0, 300)")
 driver.find_element(By.CSS_SELECTOR, 'li#item-7 span').click()
 time.sleep(3)
 
-line = 'D:/QA2823/Alexey_Zabrodsky/Home_work/home_work_2.txt'
 file_input = driver.find_element(By.CSS_SELECTOR, 'input#uploadFile')
-file_input.send_keys(line)
+file_input.send_keys('D:/QA2823/Alexey_Zabrodsky/Home_work/home_work_2.txt')
 element = driver.find_element(By.CSS_SELECTOR, 'p#uploadedFilePath').is_displayed()
 assert element == 1
 time.sleep(1)
