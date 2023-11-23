@@ -24,7 +24,8 @@ driver.find_element(By.CSS_SELECTOR, 'input#userEmail').send_keys('LeshaZabrodsk
 driver.implicitly_wait(5)
 driver.find_element(By.CSS_SELECTOR, 'textarea#currentAddress').send_keys('Минск, ул. Некрасова 61')
 driver.implicitly_wait(5)
-driver.find_element(By.CSS_SELECTOR, 'textarea#permanentAddress').send_keys('Минск, ул. 50 лет Победы 69')
+(driver.find_element(By.CSS_SELECTOR, 'textarea#permanentAddress')
+ .send_keys('Минск, ул. 50 лет Победы 69'))
 driver.implicitly_wait(5)
 driver.find_element(By.CSS_SELECTOR, 'button#submit').click()
 time.sleep(2)
@@ -101,9 +102,9 @@ driver.execute_script("window.scrollTo(0, 300)")
 driver.find_element(By.CSS_SELECTOR, 'li#item-7 span').click()
 time.sleep(3)
 
-file_patch = 'D:/QA2823/Alexey_Zabrodsky/Home_work/home_work_2.txt'
+line = 'D:/QA2823/Alexey_Zabrodsky/Home_work/home_work_2.txt'
 file_input = driver.find_element(By.CSS_SELECTOR, 'input#uploadFile')
-file_input.send_keys(file_patch)
+file_input.send_keys(line)
 element = driver.find_element(By.CSS_SELECTOR, 'p#uploadedFilePath').is_displayed()
 assert element == 1
 time.sleep(1)
