@@ -101,5 +101,3 @@ driver.find_element(By.XPATH, '//button[text()="Click Me"]').click()
 time.sleep(1)
 driver.close()
 driver.quit()
-
-# 5. Upload and Download
