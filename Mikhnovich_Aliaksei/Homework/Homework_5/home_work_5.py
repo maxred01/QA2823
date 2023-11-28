@@ -1,20 +1,20 @@
+import time
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
-import time
 
 
 driver = webdriver.Chrome()
 action = ActionChains(driver)
 driver.maximize_window()
 
-url = 'https://demoqa.com/'
+URL = 'https://demoqa.com/'
 
 # 1. Tex Box
 
-driver.get(url)
+driver.get(URL)
 element = driver.find_element(
     By.XPATH, '//div[@class="avatar mx-auto white"]//*[@viewBox="0 0 448 512"]'
 )
@@ -37,7 +37,7 @@ driver.quit()
 
 # 2. Radio Button
 
-driver.get(url)
+driver.get(URL)
 driver.find_element(
     By.XPATH, '//div[@class="avatar mx-auto white"]//*[@viewBox="0 0 448 512"]'
 ).click()
@@ -49,14 +49,14 @@ time.sleep(2)
 test_button = driver.find_element(
     By.XPATH, '//label[@class="custom-control-label"][@for="yesRadio"]'
 ).text
-radio_button = "Yes"
-assert radio_button == test_button, f'Test failed, Radio Button: {test_button}'
+RADIO_BUTTON = "Yes"
+assert RADIO_BUTTON == test_button, f'Test failed, Radio Button: {test_button}'
 driver.close()
 driver.quit()
 
 # 3. Check Box
 
-driver.get(url)
+driver.get(URL)
 driver.find_element(
     By.XPATH, '//div[@class="avatar mx-auto white"]//*[@viewBox="0 0 448 512"]'
 ).click()
@@ -82,7 +82,7 @@ driver.quit()
 
 # 4. Buttons
 
-driver.get(url)
+driver.get(URL)
 driver.find_element(
     By.XPATH, '//div[@class="avatar mx-auto white"]//*[@viewBox="0 0 448 512"]'
 ).click()
