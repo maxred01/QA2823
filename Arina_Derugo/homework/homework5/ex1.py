@@ -23,3 +23,4 @@ driver.find_element(By.XPATH, '[id="permanentAddress"]').send_keys('street Zahar
 time.sleep(1)
 driver.find_element(By.XPATH, "button[id='submit']").click()
 time.sleep(1)
+
