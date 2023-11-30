@@ -5,6 +5,15 @@ from selenium.webdriver.common.by import By
 import pytest_check as check
 
 
+created = 'https://demoqa.com/created'
+no_content = 'https://demoqa.com/no-content'
+moved = 'https://demoqa.com/moved'
+bad_request = 'https://demoqa.com/bad-request'
+unauthorized = 'https://demoqa.com/unauthorized'
+forbidden = 'https://demoqa.com/forbidden'
+not_found = 'https://demoqa.com/invalid-url'
+
+
 def test_homework6_check_links():
 
     driver = webdriver.Chrome()
@@ -14,14 +23,6 @@ def test_homework6_check_links():
     driver.get('https://demoqa.com/links')
     driver.implicitly_wait(5)
     driver.execute_script('window.scrollBy(0,300)')
-
-    created = 'https://demoqa.com/created'
-    no_content = 'https://demoqa.com/no-content'
-    moved = 'https://demoqa.com/moved'
-    bad_request = 'https://demoqa.com/bad-request'
-    unauthorized = 'https://demoqa.com/unauthorized'
-    forbidden = 'https://demoqa.com/forbidden'
-    not_found = 'https://demoqa.com/invalid-url'
 
     links_url = [created, no_content, moved, bad_request, unauthorized, forbidden, not_found]
     links_url_data = {}

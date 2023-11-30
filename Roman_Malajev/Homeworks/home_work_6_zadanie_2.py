@@ -2,6 +2,13 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pytest_check as check
 
+new_first_name = 'duvdfivb'
+new_last_name = 'sdfsdsdfsdf'
+new_email = 'aasdas@aiodjasiod.com'
+new_age = '99'
+new_salary = '1000000'
+new_department = 'egfefefesd'
+
 
 def test_homework6_change_table():
 
@@ -12,24 +19,23 @@ def test_homework6_change_table():
     driver.get('https://demoqa.com/webtables')
     driver.implicitly_wait(5)
 
-    old_first_name = driver.find_element(By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[1]').text
-    old_last_name = driver.find_element(By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[2]').text
-    old_age = driver.find_element(By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[3]').text
-    old_email = driver.find_element(By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[4]').text
-    old_salary = driver.find_element(By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[5]').text
-    old_department = driver.find_element(By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[6]').text
+    old_first_name = driver.find_element \
+        (By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[1]').text
+    old_last_name = driver.find_element \
+        (By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[2]').text
+    old_age = driver.find_element \
+        (By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[3]').text
+    old_email = driver.find_element \
+        (By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[4]').text
+    old_salary = driver.find_element \
+        (By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[5]').text
+    old_department = driver.find_element \
+        (By.XPATH, '(//div[@class="rt-tr-group"]//div[@class="rt-td"])[6]').text
 
     old_data = [old_first_name, old_last_name, old_email, old_age, old_salary, old_department]
 
     driver.find_element(By.CSS_SELECTOR, '[id="edit-record-1"]').click()
     driver.implicitly_wait(5)
-
-    new_first_name = 'duvdfivb'
-    new_last_name = 'sdfsdsdfsdf'
-    new_email = 'aasdas@aiodjasiod.com'
-    new_age = '99'
-    new_salary = '1000000'
-    new_department = 'egfefefesd'
 
     new_data = [new_first_name, new_last_name, new_email, new_age, new_salary, new_department]
 
