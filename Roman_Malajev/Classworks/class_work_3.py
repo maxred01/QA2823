@@ -96,4 +96,4 @@ def test_classwork3():
     driver.implicitly_wait(5)
     driver.find_element(By.CSS_SELECTOR, '[id="submit"]').click()
     output = driver.find_element(By.XPATH, '//div[@id="output"]')
-    check.is_true(output.is_displayed(), 'Поля нет')
+    check.is_true(output.is_displayed(), 'Поля нету')
