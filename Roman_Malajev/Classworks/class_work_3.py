@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from locators.locators_page_elements import LocatorsForms
 import pytest_check as check
-import time
 
 def test_classwork3():
 
@@ -32,14 +31,14 @@ def test_classwork3():
     title5 = driver.find_element(By.XPATH, '(//div[@class="card-body"])[5]//h5')
     title6 = driver.find_element(By.XPATH, '(//div[@class="card-body"])[6]//h5')
 
-    titles_special = [
-        title,
-        title2,
-        title3,
-        title4,
-        title5,
-        title6,
-    ]
+    # titles_special = [
+    #     title,
+    #     title2,
+    #     title3,
+    #     title4,
+    #     title5,
+    #     title6,
+    # ]
 
     titles_text = [
         (title.text, 'Elements', 'Неверный текст первого элемента'),
@@ -50,8 +49,8 @@ def test_classwork3():
         (title6.text, 'Book Store Application', 'Неверный текст шестого элемента'),
     ]
 
-    # for perviy, vtoroy, tretiy in titles_text:
-    #     check.equal(perviy, vtoroy, tretiy)
+    for perviy, vtoroy, tretiy in titles_text:
+        check.equal(perviy, vtoroy, tretiy)
 
     titles_isdisplayed = [
         (title.is_displayed(), 'Первый элемент не отображается'),
@@ -62,17 +61,17 @@ def test_classwork3():
         (title6.is_displayed(), 'Шестой элемент не отображается'),
     ]
 
-    # for perviy, vtoroy in titles_isdisplayed, titles_text:
-    #     check.is_true(perviy, vtoroy)
+    for perviy, vtoroy in titles_isdisplayed, titles_text:
+        check.is_true(perviy, vtoroy)
 
-    titles_special = [
-        (title, 'Elements', 'Неверный текст первого элемента'),
-        (title2, 'Forms', 'Неверный текст второго элемента'),
-        (title3, 'Alerts, Frame & Windows', 'Неверный текст третьего элемента'),
-        (title4, 'Widgets', 'Неверный текст четвертого элемента'),
-        (title5, 'Interactions', 'Неверный текст пятого элемента'),
-        (title6, 'Book Store Application', 'Неверный текст шестого элемента'),
-    ]
+    # titles_special = [
+    #     (title, 'Elements', 'Неверный текст первого элемента'),
+    #     (title2, 'Forms', 'Неверный текст второго элемента'),
+    #     (title3, 'Alerts, Frame & Windows', 'Неверный текст третьего элемента'),
+    #     (title4, 'Widgets', 'Неверный текст четвертого элемента'),
+    #     (title5, 'Interactions', 'Неверный текст пятого элемента'),
+    #     (title6, 'Book Store Application', 'Неверный текст шестого элемента'),
+    # ]
 
     # for element, name, error in titles_special:
     #     if check.is_true(element.):
