@@ -30,7 +30,7 @@ def test_classwork5():
                                                                               'ул. Некрасова 61')
     driver.implicitly_wait(5)
     (driver.find_element(By.CSS_SELECTOR, LocatorsForms.Permanent_Address).send_keys
-     ('Минск, ул. 50 лет Победы 68'))
+     ('Минск, ул. 50 лет Победы 69'))
     driver.implicitly_wait(5)
     driver.find_element(By.ID, 'submit').click()
     time.sleep(2)

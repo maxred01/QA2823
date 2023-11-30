@@ -22,7 +22,7 @@ def test_classwork5():
 
 # Проверяет текст в сравнении!!!
     elements = [
-        (elements1.text, 'Elements', 'Неверный  текст первого элемента'),
+        (elements1.text, 'Elements', 'Неверный текст первого элемента'),
         (elements2.text, 'Forms', 'Неверный текст второй элемент'),
         (elements3.text, 'Alerts, Frame & Windows', 'Неверный текст трейтий элемент'),
         (elements4.text, 'Widgets', 'Неверный текст четвертый элемент'),
