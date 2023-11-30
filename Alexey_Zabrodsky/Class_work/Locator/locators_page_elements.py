@@ -3,3 +3,4 @@ class LocatorsForms:
     Email = 'input#userEmail'
     Current_Address = 'textarea#currentAddress'
     Permanent_Address = 'textarea#permanentAddress'
+
