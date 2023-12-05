@@ -45,9 +45,6 @@ class BasePage:
         by_name, by_val = args[0]
         return self.driver.find_elements(by_name, by_val)
 
-    def go_to_main_page(self):
-        self.is_element_visible(base_page_locators.header_logo).click()
-
     def get_current_url(self):
         return self.driver.current_url
 
