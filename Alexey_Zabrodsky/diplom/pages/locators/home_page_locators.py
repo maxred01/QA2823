@@ -45,7 +45,6 @@ button_vse_dlya_pitomtsev = (By.CSS_SELECTOR, 'div.menu_catalog [data-id="5246"]
 button_odezhda_i_obuv = (By.CSS_SELECTOR, 'div.menu_catalog [data-id="5675"]')
 button_stroymaterialy = (By.CSS_SELECTOR, 'div.menu_catalog [data-id="18957"]')
 button_utsenonnyye_tovary = (By.CSS_SELECTOR, 'div.menu_catalog [data-id="5386"]')
-
 # <---assert menu--->
 assert_novinki = (By.CSS_SELECTOR, '[page_id="19860"]')
 assert_podarochnyye_nabory = (By.CSS_SELECTOR, '[page_id="21347"]')
@@ -76,7 +75,7 @@ assert_odezhda_i_obuv = (By.CSS_SELECTOR, '[page_id="5675"]')
 assert_stroymaterialy = (By.CSS_SELECTOR, '[page_id="18957"]')
 assert_utsenonnyye_tovary = (By.CSS_SELECTOR, '[page_id="5386"]')
 
-# <---Menu in menu--->
+# <---MENU in MENU--->
 # <---РАСПРОДАЖА--->
 rasprodazha = (By.CSS_SELECTOR, '[title="Осенняя распродажа"]')
 # <---НОВОГОДНИЕ ТОВАРЫ--->
@@ -96,13 +95,13 @@ button_dostavka_i_oplata_foot = (By.CSS_SELECTOR, 'div.footer__menu__item'
                                                   '[title="Доставка и оплата"]')
 button_kontakty = (By.CSS_SELECTOR, 'div.footer__menu__item [title="Контакты"]')
 
-# <---assert footer--->
+# <---assert footer and header--->
 assert_novosti = (By.CSS_SELECTOR, '[page_id="5"]')
 assert_stati = (By.CSS_SELECTOR, '[page_id="4"]')
 assert_o_magazine_foot = (By.CSS_SELECTOR, '[page_id="47"]')
 assert_dostavka_i_oplata_foot = (By.CSS_SELECTOR, '[page_id="48"]')
 assert_kontakty = (By.CSS_SELECTOR, '[page_id="20"]')
-
+assert_garantia = (By.CSS_SELECTOR, '[page_id="20621"]')
 # <---zakazat--->
 button_zakazat = (By.CSS_SELECTOR, '[class="teaser__catitem__list"] '
                                    'div.teaser__catitem:nth-of-type(1) div#id__buy__fast')

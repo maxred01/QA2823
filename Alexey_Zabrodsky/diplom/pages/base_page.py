@@ -4,7 +4,6 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-from Alexey_Zabrodsky.diplom.pages.locators import base_page_locators
 
 
 class BasePage:
@@ -56,16 +55,6 @@ class BasePage:
         return self.driver.find_elements(by_name, by_val)
 # Находит все элементы на странице,
 # соответствующие заданным параметрам поиска
-
-    def go_to_main_page(self):
-        self.is_element_visible(base_page_locators.header_logo).click()
-# Метод go_to_main_page() переходит на главную страницу.
-# Метод использует метод is_element_visible() для поиска
-# элемента с логотипом на странице и кликает на него.
-# Метод is_element_visible() ожидает, что элемент с
-# логотипом появится на странице и станет видимым в течение 10 секунд.
-# Если элемент не появляется на странице в течение 10 секунд,
-# возникает исключение TimeoutException
 
     def get_current_url(self):
         return self.driver.current_url
