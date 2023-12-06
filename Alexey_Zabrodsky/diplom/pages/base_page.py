@@ -7,23 +7,47 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class BasePage:
+    """ Класс BasePage инициализируется с помощью WebDriver,
+        который передается в конструктор как аргумент driver.
+        Это означает, что каждый экземпляр класса BasePage
+        будет иметь доступ к объекту WebDriver, который
+        будет использоваться для поиска элементов на странице"""
+
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-    def find_visible(self, *args):
+    def find_element(self, *args):
+        """ Метод find_element() принимает два аргумента:
+            by_name и by_val, которые определяют, как искать
+            элемент на странице. Метод использует self.driver
+            для поиска элемента на странице и возвращает найденный элемент"""
+
         by_name, by_val = args[0]
         return self.driver.find_element(by_name, by_val)
-# Для поиска элемента на странице и возвращает найденный элемент
 
     def is_element_visible(self, *args):
+        """ Метод is_element_visible() также принимает два аргумента:
+            by_name и by_val, которые определяют, как искать элемент на странице.
+            Метод использует WebDriverWait для ожидания видимости
+            элемента на странице в течение 10 секунд, после чего
+            он возвращает найденный элемент. Если элемент не появляется
+            на странице в течение 10 секунд, возникает исключение TimeoutException"""
+
         by_name, by_val = args[0]
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((by_name, by_val))
         )
         return self.driver.find_element(by_name, by_val)
-# Для ожидания видимости элемента на странице в течение 10 секунд
 
     def is_not_element_present(self, *args):
+        """ Метод is_not_element_present() проверяет, что элемент не появляется
+            на странице в течение 10 секунд. Метод принимает два аргумента:
+            by_name и by_val, которые определяют, как искать элемент на странице.
+            Метод использует WebDriverWait для ожидания отсутствия элемента на
+            странице в течение 10 секунд. Если элемент не появляется на
+            странице в течение 10 секунд, метод возвращает True. Если элемент
+            все же появляется, возникает исключение TimeoutException, и метод возвращает False"""
+
         try:
             by_name, by_val = args[0]
             WebDriverWait(self.driver, 10).until_not(
@@ -32,11 +56,17 @@ class BasePage:
         except TimeoutException:
             return False
         return True
-# Для ожидания отсутствия элемента Если элемент не появляется на странице в течение 10 секунд, метод
-# возвращает True. Если элемент все же появляется, возникает исключение
-# TimeoutException, и метод возвращает False
 
     def is_element_present(self, *args):
+        """ Метод is_element_present() проверяет, что элемент появляется
+            на странице в течение 10 секунд. Метод принимает два аргумента:
+            by_name и by_val, которые определяют, как искать элемент
+            на странице. Метод использует WebDriverWait для ожидания
+            появления элемента на странице в течение 10 секунд. Если элемент
+            появляется на странице в течение 10 секунд, метод возвращает True.
+            Если элемент не появляется, возникает исключение TimeoutException,
+            и метод возвращает False"""
+
         try:
             by_name, by_val = args[0]
             WebDriverWait(self.driver, 10).until(
@@ -45,17 +75,29 @@ class BasePage:
         except TimeoutException:
             return False
         return True
-# Для ожидания появления элемента Если элемент
-# появляется на странице в течение 10 секунд, метод возвращает True.
-# Если элемент не появляется, возникает исключение TimeoutException,
-# и метод возвращает False
 
     def find_elements(self, *args):
+        """ Метод find_elements() находит все элементы на странице,
+            соответствующие заданным параметрам поиска. Метод принимает
+            два аргумента: by_name и by_val, которые определяют,
+            как искать элементы на странице. Метод использует self.driver
+            для поиска элементов на странице и возвращает найденные элементы"""
+
         by_name, by_val = args[0]
         return self.driver.find_elements(by_name, by_val)
-# Находит все элементы на странице,
-# соответствующие заданным параметрам поиска
+
+    def go_to_main_page(self):
+        """ Метод go_to_main_page() переходит на главную страницу.
+            Метод использует метод is_element_visible() для поиска
+            элемента с логотипом на странице и кликает на него.
+            Метод is_element_visible() ожидает, что элемент с
+            логотипом появится на странице и станет видимым в течение 10 секунд.
+            Если элемент не появляется на странице в течение 10 секунд,
+            возникает исключение TimeoutException"""
+
+        self.is_element_visible(base_page_locators.header_logo).click()
 
     def get_current_url(self):
+        """ Метод get_current_url() возвращает текущий URL-адрес страницы"""
+
         return self.driver.current_url
-# Возвращает текущий URL-адрес страницы
