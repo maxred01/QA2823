@@ -1,3 +1,5 @@
+import time
+
 import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.chrome.webdriver import WebDriver
@@ -9,6 +11,18 @@ from selenium.webdriver.common.action_chains import ActionChains
 class BasePage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
+
+    def check_elements(self, *args):
+        element = args
+        for elem in element:
+            assert self.is_element_visible(elem) is True
+
+    def check_elements_click(self, *args):
+        elements = args
+        for element in elements:
+            if self.is_element_visible(element):
+                self.driver.find_element(element).click()
+
 
     def find_element(self, *args):
         by_name, by_val = args[0]

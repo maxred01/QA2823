@@ -39,7 +39,7 @@ yt_kids_button = (By.CSS_SELECTOR, '[href="https://www.youtubekids.com/?source=y
 settings_button = (By.XPATH, '//a[@href="/account" and @title="Настройки"]')
 reports_button = (By.XPATH, '//a[@href="/reporthistory"]')
 about_button = (By.XPATH, '//a[@title="Справка"]')
-send_report = (By.XPATH, '//a[@title="Отправить отзыв"]')
+send_report_button = (By.XPATH, '//a[@title="Отправить отзыв"]')
 
 #left menu close buttons
 
@@ -56,6 +56,6 @@ categoria_nature_button = (By.XPATH, '//yt-formatted-string[@id="text" and @titl
 categoria_recently_published_button = (By.XPATH, '//yt-formatted-string[@id="text" and @title="Недавно опубликованные"]')
 
 #videos
-video = (By.XPATH, '//div[@class="style-scope ytd-rich-item-renderer"][1]')
-video_img = (By.XPATH, '(//div[@id="content"]//img[@style="background-color: transparent;"])[1]')
+videos = (By.XPATH, '//div[@class="style-scope ytd-rich-item-renderer"]')
+videos_img = (By.XPATH, '//div[@id="content"]//img[@style="background-color: transparent;"]')
 
