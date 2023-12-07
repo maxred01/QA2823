@@ -15,7 +15,9 @@ class HomePage(BasePage):
 
     def go_to(self):
         with allure.step("Нажать кнопку войти на главном экране"):
-            self.find_element(home_page_locators.button_o_magazine).click()
+            self.driver.execute_script("window.scrollTo(0, 200)")
+            self.find_element(home_page_locators.button_korzina_mobile).click()
+
 
 
 

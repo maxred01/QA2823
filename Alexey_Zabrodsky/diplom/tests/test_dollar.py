@@ -11,4 +11,4 @@ def test_link_header(driver):
     page = HomePage(driver)
     page.open()
     page.go_to()
-    page.check_for_url_is_changed(page.get_current_url(), 'https://www.dollar.by/about')
+    page.check_for_url_is_changed(page.get_current_url(), 'https://www.dollar.by/shopcart')
