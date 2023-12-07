@@ -18,6 +18,9 @@ class HomePage(BasePage):
             self.driver.execute_script("window.scrollTo(0, 200)")
             self.find_element(home_page_locators.button_korzina_mobile).click()
 
+    def go_to_2(self):
+        with allure.step("найти текст"):
+            return self.find_element(home_page_locators.button_novinki).text
 
 
 

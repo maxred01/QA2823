@@ -86,16 +86,6 @@ class BasePage:
         by_name, by_val = args[0]
         return self.driver.find_elements(by_name, by_val)
 
-    def go_to_main_page(self):
-        """ Метод go_to_main_page() переходит на главную страницу.
-            Метод использует метод is_element_visible() для поиска
-            элемента с логотипом на странице и кликает на него.
-            Метод is_element_visible() ожидает, что элемент с
-            логотипом появится на странице и станет видимым в течение 10 секунд.
-            Если элемент не появляется на странице в течение 10 секунд,
-            возникает исключение TimeoutException"""
-
-        self.is_element_visible(base_page_locators.header_logo).click()
 
     def get_current_url(self):
         """ Метод get_current_url() возвращает текущий URL-адрес страницы"""
