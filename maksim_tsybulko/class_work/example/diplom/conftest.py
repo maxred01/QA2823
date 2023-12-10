@@ -1,78 +1,214 @@
-import requests
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import pytest, requests, logging
-
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import base64
-from selenium.webdriver import DesiredCapabilities
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.proxy import *
-
-
-# 1. requests - библиотека для отправки HTTP-запросов и получения ответов. Она используется для взаимодействия с веб-серверами и получения данных с веб-страниц.
-# 2. selenium - библиотека для автоматизации действий веб-браузера. Она используется для создания автоматизированных тестов, скрапинга данных с веб-страниц и других задач, связанных с веб-браузером.
-# 3. pytest - библиотека для создания и выполнения автоматических тестов. Она используется для тестирования кода, написанного на Python, и проверки его корректности.
-# 4. logging - библиотека для регистрации сообщений, создания журналов и отслеживания ошибок в приложениях. Она используется для записи сообщений об ошибках и отладочной информации в файлы журналов.
-# 5. base64 - библиотека для кодирования и декодирования данных в формате Base64. Она используется для конвертации данных в строковый формат, который может быть передан веб-браузеру.
-# 6. DesiredCapabilities - класс, предоставляемый Selenium WebDriver, для настройки параметров браузера. Он используется для установки параметров, таких как версия браузера, операционная система и другие настройки.
-# 7. ChromeDriverManager - менеджер драйверов для браузера Google Chrome. Он используется для автоматической загрузки и установки драйвера Chrome, который необходим для работы Selenium WebDriver с браузером Chrome.
-# 8. selenium.webdriver.common.proxy - модуль, предоставляемый Selenium WebDriver, для настройки прокси-сервера. Он используется для установки параметров прокси-сервера, таких как адрес и порт.
-
-
-@pytest.fixture(scope='function')
-def driver():
-    """ Фикстура driver() создает экземпляр объекта WebDriver
-        и устанавливает его настройки. Фикстура устанавливает режим
-        без графического интерфейса (--headless) и отключает использование
-        GPU (--disable-gpu). Фикстура также устанавливает низкий уровень
-        журналирования (--log-level=3) и исключает журналирование
-        (--excludeSwitches) от ChromeDriver. Затем фикстура создает
-        экземпляр объекта WebDriver с помощью ChromeDriverManager и
-        максимизирует окно браузера. Фикстура также устанавливает время
-        неявного ожидания на 10 секунд. После прохождения всех тестов
-        фикстура закрывает браузер"""
-
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument('log-level=3')
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.maximize_window()
-    driver.accept_untrusted_certs = True
-    driver.implicitly_wait(10)
-    yield driver
-    driver.quit()
-
-
-@pytest.fixture(scope='function')
-def change_pass_back():
-    """ Вторая фикстура change_pass_back() выполняет обратное
-        изменение пароля. Эта фикстура используется в тестах,
-        которые изменяют пароль, чтобы вернуть исходный пароль
-        после теста. Фикстура использует библиотеку requests
-        для создания сеанса и отправки POST-запросов на сервер.
-        Фикстура отправляет запросы на сервер, чтобы вернуть
-        исходный пароль для пользователя"""
-
-    yield
-    session = requests.Session()
-    data = {
-        "login": "79964410394",
-        "password": "R911t689012345",
-        "remember": False
-    }
-    url = "https://apteka.magnit.ru/api/personal/auth/"
-
-    session.post(url, data=data)
-
-    url = "https://apteka.magnit.ru/api/personal/password/change/"
-
-    data = {
-        'password': 'R911t68901234%',
-        'passwordConfirm': 'R911t68901234%',
-        'currentPassword': 'R911t689012345'}
-
-    session.post(url, data=data)
+# import time, json, uuid, allure, pytest, requests, logging
+#
+# from selenium import webdriver
+# from selenium.webdriver.chrome.options import Options
+# import base64
+# from selenium.webdriver import DesiredCapabilities
+# from webdriver_manager.chrome import ChromeDriverManager
+# from selenium.webdriver.common.proxy import *
+#
+#
+# @allure.step("Waiting for resource availability {url}")
+# def wait_url_data(url, timeout=11):
+#     while timeout:
+#         response = requests.get(url)
+#         if not response.ok:
+#             time.sleep(1)
+#             timeout -= 1
+#         else:
+#             if 'video' in url:
+#                 return response.content
+#             else:
+#                 return response.text
+#     return None
+#
+#
+# @pytest.fixture
+# def chrome_options(chrome_options):
+#     chrome_options.options = Options()
+#     chrome_options.options.add_argument("--headless")
+#     chrome_options.options.add_argument("--disable-gpu")
+#     chrome_options.options.add_argument('--no-sandbox')
+#     # chrome_options.add_argument('--log-level=DEBUG')
+#     chrome_options.options.add_argument('--disable-dev-shm-usage')
+#
+#     return chrome_options
+#
+#
+# @pytest.hookimpl(hookwrapper=True, tryfirst=True)
+# def pytest_runtest_makereport(item):
+#     # Эта функция помогает определить, что какой-то тест не прошел
+#     # и передать эту информацию в отчет:
+#
+#     outcome = yield
+#     rep = outcome.get_result()
+#     setattr(item, "rep_" + rep.when, rep)
+#     return rep
+#
+#
+# def pytest_addoption(parser):
+#     # parser.addoption("--browser", action="store", default="chrome")
+#     parser.addoption("--browser")
+#
+#
+# def download_video(session_id):
+#     video_url = f"https://selenium.sandbox.hosterby.com/video/{session_id}.mp4"
+#     response = requests.get(video_url)
+#
+#     if response.status_code == 200:
+#         return base64.b64encode(response.content).decode("utf-8")
+#     else:
+#         print(f"Не удалось загрузить видео: {response.status_code}")
+#         return None
+#
+#
+# @pytest.fixture
+# def web_browser(request, selenium):
+#
+#     browser = selenium
+#     browser.set_window_size(1400, 1000)
+#
+#     # Вернуть экземпляр браузера в тестовый пример:
+#     yield browser
+#
+#     if request.node.rep_call.failed:
+#         # Сделать снимок экрана, если тест не прошёл:
+#         try:
+#             browser.execute_script("document.body.bgColor = 'white';")
+#
+#             # Сделать снимок экрана для локальной отладки:
+#             browser.save_screenshot('screenshots/' + str(uuid.uuid4()) + '.png')
+#
+#             # Прикрепить скриншот к отчету Allure:
+#             allure.attach(browser.get_screenshot_as_png(),
+#                           name=request.function.__name__,
+#                           attachment_type=allure.attachment_type.PNG)
+#
+#             # Для отладки:
+#             print('URL: ', browser.current_url)
+#             print('Browser logs:')
+#             for log in browser.get_log('browser'):
+#                 print(log)
+#
+#         except:
+#             pass  # игнорим все ошибки
+#
+#
+# def get_test_case_docstring(item):
+#     """ Эта функция получает строку документа из тестового примера и форматирует ее
+#         отображая эту строку в документации вместо имени тестового примера в отчетах.
+#     """
+#
+#     full_name = ''
+#
+#     if item._obj.__doc__:
+#         # Удалить лишние пробелы из строки документа:
+#         name = str(item._obj.__doc__.split('.')[0]).strip()
+#         full_name = ' '.join(name.split())
+#
+#         # Сгенерировать список параметров для параметризованных тестовых случаев:
+#         if hasattr(item, 'callspec'):
+#             params = item.callspec.params
+#
+#             res_keys = sorted([k for k in params])
+#             # Создать список на основе Dict:
+#             res = ['{0}_"{1}"'.format(k, params[k]) for k in res_keys]
+#             # Добавить dict со всеми параметрами к названию тестового примера:
+#             full_name += ' Parameters ' + str(', '.join(res))
+#             full_name = full_name.replace(':', '')
+#
+#     return full_name
+#
+#
+# def pytest_itemcollected(item):
+#     """ Эта функция изменяет имена тестовых случаев «на лету».
+#         во время выполнения тест-кейсов.
+#     """
+#
+#     if item._obj.__doc__:
+#         item._nodeid = get_test_case_docstring(item)
+#
+#
+# def pytest_collection_finish(session):
+#     """ Эта функция изменяет имена тестовых случаев «на лету»
+#         когда мы используем параметр --collect-only для pytest
+#         (чтобы получить полный список всех существующих тестовых случаев).
+#     """
+#
+#     if session.config.option.collectonly is True:
+#         for item in session.items:
+#             # Если в тестовом примере есть строка документа, нам нужно изменить ее имя на
+#             # эту строку документа для отображения удобочитаемых отчетов и для
+#             # автоматически импортировать тестовые случаи в систему управления тестированием.
+#             if item._obj.__doc__:
+#                 full_name = get_test_case_docstring(item)
+#                 print(full_name)
+#
+#         pytest.exit('Done!')
+#
+#
+# AUTHORIZATION_HEADERS = {
+#     'Accept': 'application/json, text/plain, */*',
+#     'Accept-Language': 'ru,en-US;q=0.9,en;q=0.8,ru-RU;q=0.7,pl;q=0.6',
+#     'Connection': 'keep-alive',
+#     'Origin': 'https://cp.hoster.by',
+#     'Referer': 'https://cp.hoster.by/',
+#     'Sec-Fetch-Dest': 'empty',
+#     'Sec-Fetch-Mode': 'cors',
+#     'Sec-Fetch-Site': 'same-site',
+#     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'
+#                   ' AppleWebKit/537.36 (KHTML, like Gecko)'
+#                   ' Chrome/107.0.0.0 Safari/537.36',
+#     'X-Origin': 'https://cp.hoster.by',
+#     'sec-ch-ua': '"Google Chrome";v="107",'
+#                  ' "Chromium";v="107",'
+#                  ' "Not=A?Brand";v="24"',
+#     'sec-ch-ua-mobile': '?0',
+#     'sec-ch-ua-platform': '"macOS"',
+#     'Cookie': 'BITRIX_SM_SALE_UID=49851516;'
+#               ' user_227120=53013256;'
+#               ' SOAPClient=unta60co0lil0u3sufj7n7vco7'
+# }
+#
+#
+# @pytest.fixture(scope='session')
+# def token():
+#     payload_authorization = {
+#         "email": "maksim.tsibulko@hoster.by",
+#         "password": "1qaz@WSX",
+#         "remote": False,
+#         "c_n_user": "227089",
+#         "c_n_user_a": None
+#     }
+#
+#     response_authorization = requests.post(
+#         UrlLk.url_authorization,
+#         headers=AUTHORIZATION_HEADERS,
+#         json=payload_authorization,
+#         timeout=10
+#     ).json()
+#
+#     AUTHORIZATION_HEADERS.update({
+#         'Authorization': f'Bearer {response_authorization["tokens"]["jwt_access"]}'
+#     })
+#
+#     # response_refresh = requests.get(
+#     #     UrlLk.url_refresh,
+#     #     headers=AUTHORIZATION_HEADERS,
+#     #     timeout=10
+#     # ).json()
+#
+#     return response_authorization["tokens"]["jwt_access"]
+#
+#
+# @pytest.fixture(scope='session')
+# def base_header(token):
+#     headers = AUTHORIZATION_HEADERS.copy()
+#     headers['Authorization'] = f'Bearer {token}'
+#     return headers
+#
+#
+# @pytest.fixture(scope='session')
+# def base_headers_for_registration():
+#     """Fixture to provide base headers for registration."""
+#     return AUTHORIZATION_HEADERS
