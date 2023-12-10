@@ -17,6 +17,7 @@ def driver():
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument('log-level=3')
+    options.add_argument("--disable-notifications")
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     driver = webdriver.Chrome()
     driver.maximize_window()
