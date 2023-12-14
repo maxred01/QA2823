@@ -77,7 +77,7 @@ def web_browser(request):
         except:
             pass  # игнорим все ошибки
 
-    driver.quit()
+    browser.quit()
 
 
 def get_test_case_docstring(item):
