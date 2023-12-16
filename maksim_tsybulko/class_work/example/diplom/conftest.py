@@ -46,27 +46,11 @@ def pytest_runtest_makereport(item):
     return rep
 
 
-def pytest_addoption(parser):
-    # parser.addoption("--browser", action="store", default="chrome")
-    parser.addoption("--browser")
-
-
-def download_video(session_id):
-    video_url = f"https://selenium.sandbox.hosterby.com/video/{session_id}.mp4"
-    response = requests.get(video_url)
-
-    if response.status_code == 200:
-        return base64.b64encode(response.content).decode("utf-8")
-    else:
-        print(f"Не удалось загрузить видео: {response.status_code}")
-        return None
-
-
 @pytest.fixture
-def web_browser(request, selenium):
+def web_browser(request):
 
-    browser = selenium
-    browser.set_window_size(1400, 1000)
+    browser = webdriver.Chrome()
+    browser.maximize_window()
 
     # Вернуть экземпляр браузера в тестовый пример:
     yield browser
@@ -92,6 +76,8 @@ def web_browser(request, selenium):
 
         except:
             pass  # игнорим все ошибки
+
+    browser.quit()
 
 
 def get_test_case_docstring(item):
