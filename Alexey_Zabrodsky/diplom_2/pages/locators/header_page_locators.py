@@ -12,6 +12,13 @@ class HeaderBtn(WebPage):
 
         super().__init__(web_driver, url)
 
-    # О компании
+    # О магазине
     button_o_magazine = WebElement(css_selector='div.header__menu__item:nth-of-type(1) a')
+    # Доставка и оплата
     button_dostavka_i_oplata = WebElement(css_selector='div.header__menu__item:nth-of-type(2) a')
+    # Гарантия
+    button_garantiya = WebElement(css_selector='div.header__menu__item:nth-of-type(3) a')
+    # Инстаграм
+    button_instagram = WebElement(css_selector='div.header div.header__social_links a:nth-of-type(1)')
+    # Фейсбук
+    button_facebook = WebElement(css_selector='div.header div.header__social_links a:nth-of-type(2)')
