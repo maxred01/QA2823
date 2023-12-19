@@ -11,7 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.proxy import *
 
 
-@pytest.fixture(score='function')
+@pytest.fixture()
 def driver():
     options = Options()
     options.add_argument("--headless")
