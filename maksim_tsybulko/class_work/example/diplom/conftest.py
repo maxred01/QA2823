@@ -79,6 +79,8 @@ def web_browser(request):
 
     browser.quit()
 
+    browser.close()
+    browser.quit()
 
 def get_test_case_docstring(item):
     """ Эта функция получает строку документа из тестового примера и форматирует ее

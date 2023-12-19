@@ -1,9 +1,10 @@
 import time
+
 import pytest_check as check
 import allure
 
-from QA2823.maksim_tsybulko.class_work.example.diplom.pages.locators.futer_page_locators import FuterBtn
-
+from maksim_tsybulko.class_work.example.diplom.pages.locators.futer_page_locators import FuterBtn
+from maksim_tsybulko.class_work.example.diplom.conftest import web_browser
 
 @allure.feature('Смоук тест')
 @allure.story('Имитация скролла в низ экрана и нажатия кнопок футера')

@@ -305,7 +305,6 @@ class WebElement(object):
         except Exception as e:
             pass  # Просто игнорирует ошибку, если мы не можем отправить ключи к элементу
 
-
     def scroll_to_element_2(self):
         """ Прокрутить страницу до элемента. """
 
@@ -314,7 +313,6 @@ class WebElement(object):
         # # Прокрутить страницу до элемента:
         # Option #1 для прокрутки до элемента:
         self._web_driver.execute_script("arguments[0].scrollIntoView();", element)
-
 
     def scroll_to_element_3(self):
         """ Прокрутить страницу до элемента. """
@@ -333,7 +331,6 @@ class WebElement(object):
 
         # Прокручиваем страницу
         self._web_driver.execute_script("window.scrollBy(0, arguments[0]);", scroll_offset)
-
 
     def delete(self):
         """ Удаляет элемент со страницы. """
