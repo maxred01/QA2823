@@ -264,18 +264,6 @@ class WebElement(object):
             msg = 'Element with locator {0} not found'
             raise AttributeError(msg.format(self._locator))
 
-    def scroll_mouse_click(self, x_offset=0, y_offset=0, hold_seconds=0):
-        """ Кликнуть средней кнопкой мыши по элементу. """
-
-        element = self.wait_to_be_clickable()
-
-        if element:
-            action = ActionChains(self._web_driver)
-            action.move_to_element_with_offset(element, x_offset, y_offset). \
-                pause(hold_seconds).scroll_to_element(element=element).perform()
-        else:
-            msg = 'Element with locator {0} not found'
-            raise AttributeError(msg.format(self._locator))
 
     def move_to(self, x_offset=0, y_offset=0, hold_seconds=0):
         """ Наведение мышки на элемент без клика """

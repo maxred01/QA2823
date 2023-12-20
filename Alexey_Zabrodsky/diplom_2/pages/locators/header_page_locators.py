@@ -26,7 +26,7 @@ class HeaderBtn(WebPage):
     button_viber = WebElement(css_selector='div.header div.block__phone__social__item.viber a')
     button_watsapp = WebElement(css_selector='div.header div.block__phone__social__item.watsapp a')
     button_telegram = WebElement(css_selector='div.header div.block__phone__social__item.telegram a')
-    number_velcom = WebElement(css_selector='div.header a#id__header_phone_velcom')
+    number_A1 = WebElement(css_selector='div.header a#id__header_phone_velcom')
     number_mts = WebElement(css_selector='div.header a#id__header_phone_mts')
     number_city = WebElement(css_selector='div.header a#id__header_phone_city')
 
@@ -37,3 +37,7 @@ class HeaderBtn(WebPage):
     button_poisk_mini = WebElement(css_selector='div.mobile__navbar.active '
                                                 'button#id__top__search__button')
     button_logo_mini = WebElement(css_selector='div.mobile__navbar__logo a')
+    button_info_mini = WebElement(css_selector='div.header__phones')
+    number_A1_mini = WebElement(css_selector='div.mobile__navbar.active div.header__phones>div:nth-of-type(1) a')
+    number_mts_mini = WebElement(css_selector='div.mobile__navbar.active div.header__phones>div:nth-of-type(2) a')
+    number_city_mini = WebElement(css_selector='div.mobile__navbar.active div.header__phones>div:nth-of-type(3) a')
