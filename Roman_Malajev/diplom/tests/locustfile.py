@@ -9,6 +9,6 @@ class User(HttpUser):
     @task
     def postMethod(self):
         self.client.post('/?act=connect_authorize', json={
-        'username': 'romanmalajev@gmail.com',
-        'password': 'VK59724150987'
+        'username': '',
+        'password': ''
         })
