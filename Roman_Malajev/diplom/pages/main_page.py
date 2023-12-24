@@ -3,6 +3,7 @@ import allure
 from selenium.webdriver.common.by import By
 from Roman_Malajev.diplom.pages.base_page import BasePage
 from Roman_Malajev.diplom.pages.locators import main_page_locators
+from Roman_Malajev.diplom.pages.api_data import main_page_api_data
 
 
 class MainPage(BasePage):
@@ -11,10 +12,17 @@ class MainPage(BasePage):
         super().__init__(driver)
         self.driver = driver
 
+#открытие сайта
+
     def open_page(self):
         with allure.step("Проверка перехода на главную страницу"):
             self.driver.get('https://www.youtube.com/')
             self.wait_for_page_to_load(self.driver)
+
+    def open_page_api(self):
+        with allure.step("API проверка загрузки главной страницы"):
+            url, payload, headers = main_page_api_data.open_page_api()
+            self.check_headers_yt(url, headers, payload)
 
 #проверка наличия кнопок хэдэра
 
@@ -27,6 +35,11 @@ class MainPage(BasePage):
         with allure.step("Проверка наличия логотипа"):
             self.click_element(main_page_locators.logo_button)
             time.sleep(0.2)
+
+    def check_header_logo_button_api(self):
+        with allure.step("API проверка загрузки гл страницы после нажатия на лого"):
+            url, payload, headers = main_page_api_data.check_header_logo_button_api()
+            self.check_headers_yt(url, headers, payload)
 
     def check_header_search_field(self):
         with allure.step("Проверка наличия поля ввода"):
@@ -136,6 +149,11 @@ class MainPage(BasePage):
             self.click_element(main_page_locators.main_button)
             time.sleep(0.5)
 
+    def check_left_menu_main_button_api(self):
+        with allure.step("API Проверка ответа после нажатия на кнопку Главная"):
+            url, payload, headers = main_page_api_data.check_left_menu_main_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_left_menu_shorts_button(self):
         with allure.step("Проверка наличия кнопки Shorts"):
             self.click_element(main_page_locators.shorts_button)
@@ -146,15 +164,30 @@ class MainPage(BasePage):
             self.click_element(main_page_locators.subscriptions_button)
             time.sleep(0.5)
 
+    def check_left_menu_subscriptions_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Подписки"):
+            url, payload, headers = main_page_api_data.check_left_menu_subscriptions_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_left_menu_you_button(self):
         with allure.step("Проверка наличия кнопки Вы"):
             self.click_element(main_page_locators.you_button)
             time.sleep(0.5)
 
+    def check_left_menu_you_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Вы"):
+            url, payload, headers = main_page_api_data.check_left_menu_you_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_left_menu_history_button(self):
         with allure.step("Проверка наличия кнопки История"):
             self.click_element(main_page_locators.history_button)
             time.sleep(0.5)
+
+    def check_left_menu_history_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку История"):
+            url, payload, headers = main_page_api_data.check_left_menu_history_button()
+            self.check_headers_yt(url, headers, payload)
 
     def check_left_menu_login_button(self):
         with allure.step("Проверка наличия кнопки Войти в боковом меню"):
@@ -168,25 +201,50 @@ class MainPage(BasePage):
             self.click_element(main_page_locators.trend_button)
             time.sleep(0.5)
 
+    def check_left_menu_trend_button_api(self):
+        with allure.step("API проверка ответа после нажатия кнопки В тренде"):
+            url, payload, headers = main_page_api_data.check_left_menu_trend_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_left_menu_music_button(self):
         with allure.step("Проверка наличия кнопки Музыка"):
             self.click_element(main_page_locators.music_button)
             time.sleep(0.5)
+
+    def check_left_menu_music_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Музыка"):
+            url, payload, headers = main_page_api_data.check_left_menu_music_button_api()
+            self.check_headers_yt(url, headers, payload)
 
     def check_left_menu_video_games_button(self):
         with allure.step("Проверка наличия кнопки Видеоигры"):
             self.click_element(main_page_locators.videogames_button)
             time.sleep(0.5)
 
+    def check_left_menu_video_games_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Видеоигры"):
+            url, payload, headers = main_page_api_data.check_left_menu_video_games_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_left_menu_sport_button(self):
         with allure.step("Проверка наличия кнопки Спорт"):
             self.click_element(main_page_locators.sport_button)
             time.sleep(0.5)
 
+    def check_left_menu_sport_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Спорт"):
+            url, payload, headers = main_page_api_data.check_left_menu_sport_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_left_menu_catalogue_button(self):
         with allure.step("Проверка наличия кнопки Каталог каналов"):
             self.click_element(main_page_locators.catalogue_button)
             time.sleep(0.5)
+
+    def check_left_menu_catalogue_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Каталог каналов"):
+            url, payload, headers = main_page_api_data.check_left_menu_catalogue_button_api()
+            self.check_headers_yt(url, headers, payload)
 
     def check_left_menu_premium_button(self):
         with allure.step("Проверка наличия кнопки YouTube Premium"):
@@ -195,6 +253,11 @@ class MainPage(BasePage):
             time.sleep(0.5)
             self.click_element(main_page_locators.burger_button)
             time.sleep(0.5)
+
+    def check_left_menu_premium_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку YouTube Premium"):
+            url, payload, headers = main_page_api_data.check_left_menu_premium_button_api()
+            self.check_headers_yt(url, headers, payload)
 
     def check_left_menu_yt_music_button(self):
         with allure.step("Проверка наличия кнопки YouTube Music"):
@@ -299,44 +362,3 @@ class MainPage(BasePage):
             for video_img in videos_img[0:5]:
                 video_img.is_displayed()
                 time.sleep(0.2)
-
-#проверка авторизации
-
-    def check_login(self):
-        with allure.step("Проверка авторизации"):
-            login = 'testingseleneum@gmail.com'
-            password = 'superslozniyparolniktonehaknet123'
-
-            self.click_element(main_page_locators.header_login_button)
-            self.wait_for_page_to_load(self.driver)
-            self.driver.find_element(By.CSS_SELECTOR, main_page_locators.email_field).send_keys(login)
-            self.driver.find_element(By.CSS_SELECTOR, main_page_locators.next_button).click()
-            self.wait_for_page_to_load(self.driver)
-            time.sleep(5)
-            self.driver.find_element(By.CSS_SELECTOR, main_page_locators.password_field).send_keys(password)
-            self.driver.find_element(By.CSS_SELECTOR, main_page_locators.next_button).click()
-            self.wait_for_page_to_load(self.driver)
-
-#проверка хэдэра (пользователь вошел в акк)
-
-    def check_user_old_header_buttons(self):
-        with allure.step("Проверка наличия старых кнопок хэдэра"):
-
-            self.check_header_burger_button()
-            self.check_header_logo_button()
-            self.check_header_search_field()
-            self.check_header_keyboard_button()
-            self.check_header_search_button()
-            self.check_header_voice_search_button()
-
-    def check_user_create_button(self):
-        with allure.step("Проверка наличия кнопки Создать"):
-            self.click_element(main_page_locators.create_button)
-
-    def check_user_notifications_button(self):
-        with allure.step("Проверка наличия кнопки Уведомления"):
-            self.click_element(main_page_locators.notifications_button)
-
-    def check_user_avatar_button(self):
-        with allure.step("Проверка наличия кнопки аватара"):
-            self.click_element(main_page_locators.avatar_button)

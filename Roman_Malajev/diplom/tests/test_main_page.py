@@ -96,20 +96,17 @@ def test_videos(driver):
 @pytest.mark.presentation
 @allure.suite("Авторизация")
 @allure.title("Проверка авторизации")
-def test_login(driver):
+def test_api(driver):
     main_page = MainPage(driver)
-    main_page.open_page()
-    main_page.check_login()
-    assert not main_page.find_element(*main_page_locators.header_login_button), "Вы не вошли в аккаунт"
-
-@pytest.mark.presentation
-@allure.suite("Header (user)")
-@allure.title("Проверка наличия элементов хэдэра (пользователь вошел в аккаунт)")
-def test_user_header_items(driver):
-    main_page = MainPage(driver)
-    main_page.open_page()
-    main_page.check_login()
-    main_page.check_user_old_header_buttons()
-    main_page.check_user_create_button()
-    main_page.check_user_notifications_button()
-    main_page.check_user_avatar_button()
+    main_page.open_page_api()
+    main_page.check_header_logo_button_api()
+    main_page.check_left_menu_main_button_api()
+    main_page.check_left_menu_subscriptions_button_api()
+    main_page.check_left_menu_you_button_api()
+    main_page.check_left_menu_history_button_api()
+    main_page.check_left_menu_trend_button_api()
+    main_page.check_left_menu_music_button_api()
+    main_page.check_left_menu_video_games_button_api()
+    main_page.check_left_menu_sport_button_api()
+    main_page.check_left_menu_catalogue_button_api()
+    main_page.check_left_menu_premium_button_api()

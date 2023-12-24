@@ -2,7 +2,6 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pytest, requests, logging
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import base64
@@ -14,38 +13,17 @@ from selenium.webdriver.common.proxy import *
 @pytest.fixture(scope='function')
 def driver():
     options = Options()
-    options.add_argument("--headless")
+    # Опция для отключения GPU (графический процессор)
     options.add_argument("--disable-gpu")
-    options.add_argument('log-level=3')
+    # Опция для отключения уведомлений в браузере
     options.add_argument("--disable-notifications")
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = webdriver.Chrome()
+    # Опция для отключения отображения курсора
+    options.add_argument("--hide-scrollbars")
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
+    # Принятие недоверенных сертификатов (если такие будут обнаружены)
     driver.accept_untrusted_certs = True
     driver.implicitly_wait(10)
+    # Возвращение объекта драйвера для использования в тестах
     yield driver
     driver.quit()
-
-
-@pytest.fixture(scope='function')
-def change_pass_back():
-
-    yield
-    session = requests.Session()
-    data = {
-        "login": "79964410394",
-        "password": "R911t689012345",
-        "remember": False
-    }
-    url = "https://apteka.magnit.ru/api/personal/auth/"
-
-    session.post(url, data=data)
-
-    url = "https://apteka.magnit.ru/api/personal/password/change/"
-
-    data = {
-        'password': 'R911t68901234%',
-        'passwordConfirm': 'R911t68901234%',
-        'currentPassword': 'R911t689012345'}
-
-    session.post(url, data=data)
