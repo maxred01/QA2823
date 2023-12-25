@@ -69,6 +69,7 @@ categoria_action_and_adventures_button = (By.XPATH, '//yt-formatted-string[@id="
 categoria_nature_button = (By.XPATH, '//yt-formatted-string[@id="text" and @title="Природа"]')
 categoria_recently_published_button = (By.XPATH, '//yt-formatted-string[@id="text" and @title="Недавно опубликованные"]')
 categories = 'yt-chip-cloud-chip-renderer[class="style-scope ytd-feed-filter-chip-bar-renderer"]'
+categoria_next = (By.CSS_SELECTOR, '[aria-label="Далее"]')
 
 #videos
 videos = '//div[@class="style-scope ytd-rich-item-renderer"]'
@@ -84,3 +85,9 @@ not_now_button = '[class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-dgl2Hf ksBjEc lKxP2
 create_button = (By.CSS_SELECTOR, '[class="style-scope ytd-topbar-menu-button-renderer style-default"]')
 notifications_button = (By.CSS_SELECTOR, '[aria-label="Уведомления"]')
 avatar_button = (By.CSS_SELECTOR, '[id="avatar-btn"]')
+
+#placeholders
+placeholder_search_field = (By.CSS_SELECTOR, 'input[id="search"]')
+
+#buttontext
+text_header_login_button = (By.XPATH, '(//span[@class="yt-core-attributed-string yt-core-attributed-string--white-space-no-wrap"])[2]')

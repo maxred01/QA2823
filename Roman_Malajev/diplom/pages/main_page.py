@@ -46,6 +46,9 @@ class MainPage(BasePage):
             self.click_element(main_page_locators.search_field)
             time.sleep(0.2)
 
+        with allure.step("Проверка параметра placeholder"):
+            self.check_placeholder(main_page_locators.placeholder_search_field, 'Введите запрос')
+
     def check_header_keyboard_button(self):
         with allure.step("Проверка наличия кнопки клавиатуры"):
             self.click_element(main_page_locators.keyboard_button)
@@ -69,6 +72,9 @@ class MainPage(BasePage):
             time.sleep(0.2)
 
     def check_header_login_button(self):
+        with allure.step("Проверка текста кнопки войти"):
+            self.check_button_text(main_page_locators.text_header_login_button, 'Войти')
+
         with allure.step("Проверка наличия кнопки войти"):
             self.click_element(main_page_locators.header_login_button)
             time.sleep(0.2)
@@ -267,6 +273,11 @@ class MainPage(BasePage):
                 self.driver.close()
             time.sleep(0.5)
 
+    def check_left_menu_yt_music_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку YouTube Music"):
+            url, payload, headers = main_page_api_data.check_left_menu_yt_music_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_left_menu_yt_kids_button(self):
         with allure.step("Проверка наличия кнопки YouTube Детям"):
             self.click_element(main_page_locators.yt_kids_button)
@@ -274,6 +285,11 @@ class MainPage(BasePage):
             if self.driver.current_url == 'https://www.youtubekids.com/?source=youtube_web':
                 self.driver.close()
             time.sleep(0.5)
+
+    def check_left_menu_yt_kids_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку YouTube Детям"):
+            url, payload, headers = main_page_api_data.check_left_menu_yt_kids_button_api()
+            self.check_headers_yt(url, headers, payload)
 
     def check_left_menu_settings_button(self):
         with allure.step("Проверка наличия кнопки Настройки в боковом меню"):
@@ -288,6 +304,11 @@ class MainPage(BasePage):
         with allure.step("Проверка наличия кнопки Жалобы"):
             self.click_element(main_page_locators.reports_button)
             time.sleep(0.5)
+
+    def check_left_menu_reports_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Жалобы"):
+            url, payload, headers = main_page_api_data.check_left_menu_reports_button_api()
+            self.check_headers_yt(url, headers, payload)
 
     def check_left_menu_about_button(self):
         with allure.step("Проверка наличия кнопки Справка в боковом меню"):
@@ -314,6 +335,11 @@ class MainPage(BasePage):
             self.click_element(main_page_locators.closed_main_button)
             time.sleep(0.2)
 
+    def check_closed_left_menu_main_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Главная при закрытом меню"):
+            url, payload, headers = main_page_api_data.check_closed_left_menu_main_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_closed_left_menu_shorts_button(self):
         with allure.step("Проверка наличия кнопки Shorts при закрытом меню"):
             self.click_element(main_page_locators.closed_shorts_button)
@@ -324,24 +350,45 @@ class MainPage(BasePage):
             self.click_element(main_page_locators.closed_subscriptions_button)
             time.sleep(0.2)
 
+    def check_closed_left_menu_subscriptions_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Подписки при закрытом меню"):
+            url, payload, headers = main_page_api_data.check_closed_left_menu_subscriptions_button_api()
+            self.check_headers_yt(url, headers, payload)
+
     def check_closed_left_menu_you_button(self):
         with allure.step("Проверка наличия кнопки Вы при закрытом меню"):
             self.click_element(main_page_locators.closed_you_button)
             time.sleep(0.2)
+
+    def check_closed_left_menu_you_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку Вы при закрытом меню"):
+            url, payload, headers = main_page_api_data.check_closed_left_menu_you_button_api()
+            self.check_headers_yt(url, headers, payload)
 
     def check_closed_left_menu_history_button(self):
         with allure.step("Проверка наличия кнопки История при закрытом меню"):
             self.click_element(main_page_locators.closed_history_button)
             time.sleep(0.2)
 
+    def check_closed_left_menu_history_button_api(self):
+        with allure.step("API проверка ответа после нажатия на кнопку История при закрытом меню"):
+            url, payload, headers = main_page_api_data.check_closed_left_menu_history_button_api()
+            self.check_headers_yt(url, headers, payload)
+
 #проверка наличия категорий
 
     def check_categories(self):
         with allure.step("Проверка наличия категорий"):
             categories = self.driver.find_elements(By.CSS_SELECTOR, main_page_locators.categories)
+            count = 0
             for category in categories:
+                if count == 9:
+                    self.click_element(main_page_locators.categoria_next)
+                    time.sleep(0.5)
+                self.wait_for_page_to_load(self.driver)
                 category.click()
-                time.sleep(0.5)
+                count += 1
+                time.sleep(0.7)
 
 #проверка видео
 

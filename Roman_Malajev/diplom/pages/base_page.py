@@ -14,6 +14,20 @@ class BasePage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
+    def check_button_text(self, locator, expected_value):
+        actual_value = self.driver.find_element(*locator).text
+        if actual_value == expected_value:
+            pass
+        else:
+            raise ValueError(f"тексты кнопок не совпадают actual:{actual_value}, expected:{expected_value}")
+
+    def check_placeholder(self, locator,  expected_value):
+        actual_value = self.driver.find_element(*locator).get_attribute("placeholder")
+        if actual_value == expected_value:
+            pass
+        else:
+            raise ValueError(f"placeholder'ы не совпадают actual:{actual_value}, expected:{expected_value}")
+
     def check_headers_yt(self, url, headers, payload):
         with allure.step('Проверка скорости ответа сервера'):
             start_time = time.time()
