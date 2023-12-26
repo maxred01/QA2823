@@ -264,6 +264,17 @@ class WebElement(object):
             msg = 'Element with locator {0} not found'
             raise AttributeError(msg.format(self._locator))
 
+    def click_new_tab(self, x_offset=0, y_offset=0, hold_seconds=0):
+        """ Кликнуть правой кнопкой мыши по элементу. """
+
+        element = self.wait_to_be_clickable()
+
+        if element:
+            action = ActionChains(self._web_driver)
+            action.key_down(Keys.CONTROL).click(element).key_up(Keys.CONTROL).perform()
+        else:
+            msg = 'Element with locator {0} not found'
+            raise AttributeError(msg.format(self._locator))
 
     def move_to(self, x_offset=0, y_offset=0, hold_seconds=0):
         """ Наведение мышки на элемент без клика """
