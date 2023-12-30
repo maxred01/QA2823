@@ -163,7 +163,7 @@ def test_header_btn_inst(web_browser):
             check.is_true(page.button_instagram.wait_to_be_clickable())
             page.button_instagram.click()
             page1 = page.get_current_url()
-            check.equal(page1, 'https://www.instagram.com/dollar_by')
+            check.equal(page1, 'https://www.instagram.com/dollar_by/')
 
 
 @allure.feature('Смоук тест')
@@ -312,7 +312,7 @@ def test_futer_btn(web_browser):
 
 @allure.feature('Смоук тест')
 @allure.story('Имитация скролла в низ экрана и нажатие кнопоки Инстаграм')
-def test_futer_btn_inst(web_browser):
+def test_futer_inst(web_browser):
     """ Убеждаемся, что ссылка/кнопка Инстаграм
         кликабельна и переход на страницу корректный (Футер). """
 
@@ -325,7 +325,7 @@ def test_futer_btn_inst(web_browser):
             check.is_true(page.inst_foot.wait_to_be_clickable())
             page.inst_foot.click()
             page1 = page.get_current_url()
-            check.equal(page1, 'https://www.instagram.com/dollar_by')
+            check.equal(page1, 'https://www.instagram.com/dollar_by/')
 
 
 @allure.feature('Смоук тест')
@@ -544,6 +544,7 @@ def test_catalog_btn(web_browser):
             check.is_true(page.button_tovary_dlya_shkoly.wait_to_be_clickable())
 
     with allure.step("Проверка кнопки 'Товары для кухни'"):
+        page.execute_script("window.scrollTo(0, 200)")
         if check.equal(page.button_tovary_dlya_kukhni.get_text(), 'Товары для кухни'):
             check.equal(page.button_tovary_dlya_kukhni.get_attribute('href'),
                         'https://www.dollar.by/catalog/Tovary_dlya_kukhni')
@@ -554,6 +555,7 @@ def test_catalog_btn(web_browser):
             check.is_true(page.button_tovary_dlya_kukhni.wait_to_be_clickable())
 
     with allure.step("Проверка кнопки 'Распродажа товаров для кухни'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.rasprodazha_kukhni.get_text(), 'Распродажа товаров для кухни'):
             check.equal(page.rasprodazha_kukhni.get_attribute('href'),
@@ -567,6 +569,7 @@ def test_catalog_btn(web_browser):
                                'Rasprodazha-tovarov-dlya-kukhni')
 
     with allure.step("Проверка кнопки 'Наборы посуды'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.nabory_posudy.get_text(), 'Наборы посуды'):
             check.equal(page.nabory_posudy.get_attribute('href'),
@@ -578,6 +581,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/nabory-posudi')
 
     with allure.step("Проверка кнопки 'Кастрюли'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.kastryuli.get_text(), 'Кастрюли'):
             check.equal(page.kastryuli.get_attribute('href'),
@@ -589,6 +593,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/931')
 
     with allure.step("Проверка кнопки 'Кухонные, столовые принадлежности'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.kukhonnyye_stolovyye.get_text(), 'Кухонные, столовые принадлежности'):
             check.equal(page.kukhonnyye_stolovyye.get_attribute('href'),
@@ -600,6 +605,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/936')
 
     with allure.step("Проверка кнопки 'Терки Овощерезки Кухонные'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.terki_ovoshcherezki.get_text(), 'Терки Овощерезки Кухонные'):
             check.equal(page.terki_ovoshcherezki.get_attribute('href'),
@@ -611,6 +617,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/937')
 
     with allure.step("Проверка кнопки 'Наборы ножей'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.nabory_nozhey.get_text(), 'Наборы ножей'):
             check.equal(page.nabory_nozhey.get_attribute('href'),
@@ -622,6 +629,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/938')
 
     with allure.step("Проверка кнопки 'Для заточки ножей и ножниц'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.dlya_zatochki_nozhey.get_text(), 'Для заточки ножей и ножниц'):
             check.equal(page.dlya_zatochki_nozhey.get_attribute('href'),
@@ -635,6 +643,7 @@ def test_catalog_btn(web_browser):
                                'dlya-zatochki-nozhej-i-nozhnits')
 
     with allure.step("Проверка кнопки 'Сковороды'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.skovorody.get_text(), 'Сковороды'):
             check.equal(page.skovorody.get_attribute('href'),
@@ -646,6 +655,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/939')
 
     with allure.step("Проверка кнопки 'Мантоварки'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.mantovarki.get_text(), 'Мантоварки'):
             check.equal(page.mantovarki.get_attribute('href'),
@@ -657,6 +667,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/942')
 
     with allure.step("Проверка кнопки 'Соковыжималки'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.sokovyzhimalki.get_text(), 'Соковыжималки'):
             check.equal(page.sokovyzhimalki.get_attribute('href'),
@@ -668,6 +679,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/1139')
 
     with allure.step("Проверка кнопки 'Термосы'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.termosy.get_text(), 'Термосы'):
             check.equal(page.termosy.get_attribute('href'),
@@ -679,6 +691,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/2237')
 
     with allure.step("Проверка кнопки 'Ножи керамические'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.nozhi_keramicheskiye.get_text(), 'Ножи керамические'):
             check.equal(page.nozhi_keramicheskiye.get_attribute('href'),
@@ -690,6 +703,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/kitchen/2243')
 
     with allure.step("Проверка кнопки 'Посуда PENSOFAL'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.posuda_pensofal.get_text(), 'Посуда PENSOFAL'):
             check.equal(page.posuda_pensofal.get_attribute('href'),
@@ -701,6 +715,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/kitchen/2546')
 
     with allure.step("Проверка кнопки 'Соковарки'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.cokovarki.get_text(), 'Соковарки'):
             check.equal(page.cokovarki.get_attribute('href'),
@@ -712,6 +727,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/kitchen/4775')
 
     with allure.step("Проверка кнопки 'Формы для выпечки'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.formy_dlya_vypechki.get_text(), 'Формы для выпечки'):
             check.equal(page.formy_dlya_vypechki.get_attribute('href'),
@@ -723,6 +739,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/kitchen/4858')
 
     with allure.step("Проверка кнопки 'Сушилки для овощей, фруктов и грибов'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.sushilki_dlya_ovoshchey.get_text(),
                        'Сушилки для овощей, фруктов и грибов'):
@@ -737,6 +754,7 @@ def test_catalog_btn(web_browser):
                                'sushilki-dlya-ovoschej-fruktov-i-gribov')
 
     with allure.step("Проверка кнопки 'Вакуумные контейнеры'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.vakuumnyye_konteynery.get_text(), 'Вакуумные контейнеры'):
             check.equal(page.vakuumnyye_konteynery.get_attribute('href'),
@@ -748,6 +766,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/kitchen/5162')
 
     with allure.step("Проверка кнопки 'Аппараты для приготовления попкорна'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.apparaty_popkorna.get_text(), 'Аппараты для приготовления попкорна'):
             check.equal(page.apparaty_popkorna.get_attribute('href'),
@@ -759,6 +778,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/5237')
 
     with allure.step("Проверка кнопки 'Аппараты для приготовления сахарной ваты'"):
+        page.execute_script("window.scrollTo(0, 200)")
         page.button_tovary_dlya_kukhni.move_to()
         if check.equal(page.apparaty_sakharnoy_vaty.get_text(),
                        'Аппараты для приготовления сахарной ваты'):
@@ -770,8 +790,8 @@ def test_catalog_btn(web_browser):
             page1 = page.get_current_url()
             check.equal(page1, 'https://www.dollar.by/catalog/kitchen/5239')
 
-
     with allure.step("Проверка кнопки 'Товары для дома'"):
+        page.execute_script("window.scrollTo(0, 300)")
         if check.equal(page.button_tovary_dlya_doma.get_text(), 'Товары для дома'):
             check.equal(page.button_tovary_dlya_doma.get_attribute('href'),
                         'https://www.dollar.by/catalog/the-goods-for-the-house')
@@ -782,6 +802,7 @@ def test_catalog_btn(web_browser):
             check.is_true(page.button_tovary_dlya_doma.wait_to_be_clickable())
 
     with allure.step("Проверка кнопки 'Необычные светильники, проекторы'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.neobychnyye_svetilniki.get_text(), 'Необычные светильники, проекторы'):
             check.equal(page.neobychnyye_svetilniki.get_attribute('href'),
@@ -793,6 +814,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/1284')
 
     with allure.step("Проверка кнопки 'Бытовая техника'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.bytovaya_tekhnika.get_text(), 'Бытовая техника'):
             check.equal(page.bytovaya_tekhnika.get_attribute('href'),
@@ -805,6 +827,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances')
 
     with allure.step("Проверка кнопки 'Вентиляторы'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.ventilyatory.get_text(), 'Вентиляторы'):
             check.equal(page.ventilyatory.get_attribute('href'),
@@ -818,6 +841,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/fans')
 
     with allure.step("Проверка кнопки 'Обогреватели'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.obogrevateli.get_text(), 'Обогреватели'):
             check.equal(page.obogrevateli.get_attribute('href'),
@@ -831,6 +855,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/heaters')
 
     with allure.step("Проверка кнопки 'Аэрогрили'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.aerogrili.get_text(), 'Аэрогрили'):
             check.equal(page.aerogrili.get_attribute('href'),
@@ -844,6 +869,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/aerogrills')
 
     with allure.step("Проверка кнопки 'Блендеры, миксеры'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.blendery_miksery.get_text(), 'Блендеры, миксеры'):
             check.equal(page.blendery_miksery.get_attribute('href'),
@@ -857,6 +883,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/blenders-mixers')
 
     with allure.step("Проверка кнопки 'Машинки по уходу за одеждой'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.mashinki_odezhdoy.get_text(), 'Машинки по уходу за одеждой'):
             check.equal(page.mashinki_odezhdoy.get_attribute('href'),
@@ -870,6 +897,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/machines-on-care-of-clothes')
 
     with allure.step("Проверка кнопки 'Пароочистители'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.paroochistiteli.get_text(), 'Пароочистители'):
             check.equal(page.paroochistiteli.get_attribute('href'),
@@ -883,6 +911,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/1159')
 
     with allure.step("Проверка кнопки 'Пылесосы'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.pylesosy.get_text(), 'Пылесосы'):
             check.equal(page.pylesosy.get_attribute('href'),
@@ -896,6 +925,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/2251')
 
     with allure.step("Проверка кнопки 'Утюги'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.utyugi.get_text(), 'Утюги'):
             check.equal(page.utyugi.get_attribute('href'),
@@ -909,6 +939,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/2255')
 
     with allure.step("Проверка кнопки 'Электрочайники'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.elektrochayniki.get_text(), 'Электрочайники'):
             check.equal(page.elektrochayniki.get_attribute('href'),
@@ -922,6 +953,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/2285')
 
     with allure.step("Проверка кнопки 'Увлажнители воздуха'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.uvlazhniteli_vozdukha.get_text(), 'Увлажнители воздуха'):
             check.equal(page.uvlazhniteli_vozdukha.get_attribute('href'),
@@ -935,6 +967,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/5928')
 
     with allure.step("Проверка кнопки 'Инкубаторы'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.incubators.get_text(), 'Инкубаторы'):
             check.equal(page.incubators.get_attribute('href'),
@@ -948,6 +981,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/4610')
 
     with allure.step("Проверка кнопки 'Электрические котлы'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.elektricheskiye_kotly.get_text(), 'Электрические котлы'):
             check.equal(page.elektricheskiye_kotly.get_attribute('href'),
@@ -961,6 +995,7 @@ def test_catalog_btn(web_browser):
                                'home-appliances/electrokotli')
 
     with allure.step("Проверка кнопки 'Отпугиватели'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.otpugivateli.get_text(), 'Отпугиватели'):
             check.equal(page.otpugivateli.get_attribute('href'),
@@ -973,6 +1008,7 @@ def test_catalog_btn(web_browser):
                                'against-wreckers')
 
     with allure.step("Проверка кнопки 'Отпугиватели животных'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.otpugivateli_zhivotnykh.get_text(), 'Отпугиватели животных'):
             check.equal(page.otpugivateli_zhivotnykh.get_attribute('href'),
@@ -986,6 +1022,7 @@ def test_catalog_btn(web_browser):
                                'against-wreckers/Otpugivateli-zhivotnykh')
 
     with allure.step("Проверка кнопки 'Отпугиватели птиц'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.otpugivateli_ptits.get_text(), 'Отпугиватели птиц'):
             check.equal(page.otpugivateli_ptits.get_attribute('href'),
@@ -999,6 +1036,7 @@ def test_catalog_btn(web_browser):
                                'against-wreckers/otpugivateli-ptits')
 
     with allure.step("Проверка кнопки 'Отпугиватели кротов и змей'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.otpugivateli_krotov.get_text(), 'Отпугиватели кротов и змей'):
             check.equal(page.otpugivateli_krotov.get_attribute('href'),
@@ -1012,6 +1050,7 @@ def test_catalog_btn(web_browser):
                                'against-wreckers/Otpugivateli-krotov-i-zmey')
 
     with allure.step("Проверка кнопки 'Отпугиватели комаров и других насекомых'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.otpugivateli_komarov.get_text(),
                        'Отпугиватели комаров и других насекомых'):
@@ -1026,6 +1065,7 @@ def test_catalog_btn(web_browser):
                                'against-wreckers/Otpugivateli-komarov')
 
     with allure.step("Проверка кнопки 'Товары для уборки'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.tovary_dly_auborki.get_text(), 'Товары для уборки'):
             check.equal(page.tovary_dly_auborki.get_attribute('href'),
@@ -1039,6 +1079,7 @@ def test_catalog_btn(web_browser):
                                '/the-goods-for-cleaning')
 
     with allure.step("Проверка кнопки 'Сушилки для обуви'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.sushilki_dlya_obuvi.get_text(), 'Сушилки для обуви'):
             check.equal(page.sushilki_dlya_obuvi.get_attribute('href'),
@@ -1051,6 +1092,7 @@ def test_catalog_btn(web_browser):
                                'dryers-for-footwear')
 
     with allure.step("Проверка кнопки 'Беспроводные дверные звонки'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.besprovodnyye_zvonki.get_text(), 'Беспроводные дверные звонки'):
             check.equal(page.besprovodnyye_zvonki.get_attribute('href'),
@@ -1062,6 +1104,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/7629')
 
     with allure.step("Проверка кнопки 'Весы'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.vesy.get_text(), 'Весы'):
             check.equal(page.vesy.get_attribute('href'),
@@ -1073,8 +1116,9 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/2245')
 
     with allure.step("Проверка кнопки 'Для ухода за обувью '"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
-        if check.equal(page.dlya_ukhoda_za_obuvyu.get_text(), 'Для ухода за обувью '):
+        if check.equal(page.dlya_ukhoda_za_obuvyu.get_text(), 'Для ухода за обувью'):
             check.equal(page.dlya_ukhoda_za_obuvyu.get_attribute('href'),
                         'https://www.dollar.by/catalog/the-goods-for-the-house/'
                         'the-goods-for-cleaning/Dlya-ukhoda-za-obuvyu')
@@ -1086,6 +1130,7 @@ def test_catalog_btn(web_browser):
                                'the-goods-for-cleaning/Dlya-ukhoda-za-obuvyu')
 
     with allure.step("Проверка кнопки 'Машинки для катышек'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.mashinki_dlya_katyshek.get_text(), 'Машинки для катышек'):
             check.equal(page.mashinki_dlya_katyshek.get_attribute('href'),
@@ -1097,6 +1142,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/1117')
 
     with allure.step("Проверка кнопки 'Планетарии'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.planetarii.get_text(), 'Планетарии'):
             check.equal(page.planetarii.get_attribute('href'),
@@ -1108,6 +1154,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/7850')
 
     with allure.step("Проверка кнопки 'Сигнализация (дверная, оконная, велосипедная)'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.signalizacia.get_text(),
                        'Сигнализация (дверная, оконная, велосипедная)'):
@@ -1120,6 +1167,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/7712')
 
     with allure.step("Проверка кнопки 'Сумки, тележки, рюкзаки'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.sumki_telechki_rykzaki.get_text(), 'Сумки, тележки, рюкзаки'):
             check.equal(page.sumki_telechki_rykzaki.get_attribute('href'),
@@ -1131,6 +1179,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/7981')
 
     with allure.step("Проверка кнопки 'Рюкзаки'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.rykzaki.get_text(), 'Рюкзаки'):
             check.equal(page.rykzaki.get_attribute('href'),
@@ -1142,6 +1191,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/7981/7982')
 
     with allure.step("Проверка кнопки 'Сумки'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.sumki.get_text(), 'Сумки'):
             check.equal(page.sumki.get_attribute('href'),
@@ -1153,6 +1203,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/7981/7985')
 
     with allure.step("Проверка кнопки 'Товары для ремонта'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.tovary_dlya_remonta.get_text(), 'Товары для ремонта'):
             check.equal(page.tovary_dlya_remonta.get_attribute('href'),
@@ -1164,6 +1215,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/7558')
 
     with allure.step("Проверка кнопки 'Товары для ухода за кожей (натуральной и искусственной)'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.tovary_dlya_kozhey.get_text(),
                        'Товары для ухода за кожей (натуральной и искусственной)'):
@@ -1176,6 +1228,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/5943')
 
     with allure.step("Проверка кнопки 'Умные лампочки (светодиодные лампочки)'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.umnyye_lampochki.get_text(), 'Умные лампочки (светодиодные лампочки)'):
             check.equal(page.umnyye_lampochki.get_attribute('href'),
@@ -1187,6 +1240,7 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/the-goods-for-the-house/11920')
 
     with allure.step("Проверка кнопки 'Швейные машины и машинки'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.shveynyye_mashiny.get_text(), 'Швейные машины и машинки'):
             check.equal(page.shveynyye_mashiny.get_attribute('href'),
@@ -1199,6 +1253,7 @@ def test_catalog_btn(web_browser):
                                'sewing-machines')
 
     with allure.step("Проверка кнопки 'Распродажа товаров для дома'"):
+        page.execute_script("window.scrollTo(0, 300)")
         page.button_tovary_dlya_doma.move_to()
         if check.equal(page.rasprodazha_dlya_doma.get_text(), 'Распродажа товаров для дома'):
             check.equal(page.rasprodazha_dlya_doma.get_attribute('href'),
@@ -1383,3 +1438,70 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/5386')
             check.is_true(page.button_utsenonnyye_tovary.wait_for_visibility())
             check.is_true(page.button_utsenonnyye_tovary.wait_to_be_clickable())
+# <-----------------------------------------Left menu--------------------------------------------->
+@allure.feature('Смоук тест')
+@allure.story('Имитация скролла в низ экрана и нажатия кнопок Left menu')
+def test_left_menu_btn(web_browser):
+    """ Убеждаемся, что ссылки/кнопки Left menu
+        кликабельные и переход на страницу корректный. """
+
+    page = CatalogBtn(web_browser)
+
+    with allure.step("Проверка кнопки 'Все статьи'"):
+        if check.equal(page.button_vse_stati.get_text(), 'Все статьи'):
+            check.equal(page.button_vse_stati.get_attribute('href'),
+                        'https://www.dollar.by/articles')
+            page.button_vse_stati.click()
+            page1 = page.get_current_url()
+            check.equal(page1, 'https://www.dollar.by/articles')
+            check.is_true(page.button_vse_stati.wait_for_visibility())
+            check.is_true(page.button_vse_stati.wait_to_be_clickable())
+
+    with allure.step("Проверка кнопки 'Все новости'"):
+        if check.equal(page.button_vse_novosti.get_text(), 'Все новости'):
+            check.equal(page.button_vse_novosti.get_attribute('href'),
+                        'https://www.dollar.by/news')
+            page.button_vse_novosti.click()
+            page1 = page.get_current_url()
+            check.equal(page1, 'https://www.dollar.by/news')
+            check.is_true(page.button_vse_novosti.wait_for_visibility())
+            check.is_true(page.button_vse_novosti.wait_to_be_clickable())
+
+# <--------------------------------------------ПОИСК---------------------------------------------->
+@allure.feature('Смоук тест')
+@allure.story('Имитация скролла в низ экрана и нажатия кнопок Хедера')
+def test_poisk(web_browser):
+    """ Убеждаемся, что поиск работает корректно. """
+
+    page = HeaderBtn(web_browser)
+
+    with allure.step("Проверка поля поиска, ввод более трех символов"):
+        if check.equal(page.input_poisk.get_attribute('type'),'text'):
+            page.input_poisk.click()
+            page.input_poisk.send_keys('Кастрюля')
+            page.button_poisk.click()
+            check.not_equal(page.assert_poisk.count(), 0)
+
+    with allure.step("Проверка поиска по заданному тексту"):
+        page.input_poisk.click()
+        page.input_poisk.send_keys('Кастрюля')
+        page.button_poisk.click()
+        if check.not_equal(page.assert_poisk.count(), 0):
+            element_text = page.one_tovar.get_text().split()
+            text = element_text[0]
+            check.equal(text, 'Кастрюля')
+
+    with allure.step("Проверка поля поиска, ввод менее трех символов"):
+        if check.equal(page.input_poisk.get_attribute('type'),'text'):
+            page.input_poisk.click()
+            page.input_poisk.send_keys('А')
+            page.button_poisk.click()
+            check.equal(page.assert_poisk.count(), 0)
+
+    with allure.step("Проверка поля поиска, ввод трех символов"):
+        if check.equal(page.input_poisk.get_attribute('type'),'text'):
+            page.input_poisk.click()
+            page.input_poisk.send_keys('Кот')
+            page.button_poisk.click()
+            check.not_equal(page.assert_poisk.count(), 0)
+

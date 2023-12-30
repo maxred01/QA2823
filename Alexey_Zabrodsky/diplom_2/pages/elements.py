@@ -390,7 +390,8 @@ class ManyWebElements(WebElement):
         """ Получить количество элементов. """
 
         elements = self.find()
-        return len(elements)
+        el = len(elements)
+        return el
 
     def get_text(self):
         """ Получить текст элементов. """

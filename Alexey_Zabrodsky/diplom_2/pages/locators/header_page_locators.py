@@ -41,3 +41,8 @@ class HeaderBtn(WebPage):
     number_A1_mini = WebElement(css_selector='div.mobile__navbar.active div.header__phones>div:nth-of-type(1) a')
     number_mts_mini = WebElement(css_selector='div.mobile__navbar.active div.header__phones>div:nth-of-type(2) a')
     number_city_mini = WebElement(css_selector='div.mobile__navbar.active div.header__phones>div:nth-of-type(3) a')
+
+# assert poisk
+    assert_poisk = ManyWebElements(css_selector='div.page__search__items>div')
+    one_tovar = WebElement(css_selector='div.page__search__items>div:nth-of-type(1) '
+                                        'div.page__search__item__title a')
