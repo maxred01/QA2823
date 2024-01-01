@@ -80,7 +80,7 @@ class BasePage:
         except TimeoutException:
             return False
 
-    def click_element(self, locator):
+    def find_and_click_element(self, locator):
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
         element.click()
 
