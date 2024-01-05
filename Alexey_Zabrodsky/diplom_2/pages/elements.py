@@ -113,6 +113,16 @@ class WebElement(object):
 
         return False
 
+    def is_enabled(self) -> bool:
+        """Проверка, активна ли кнопка слайдера"""
+
+        element = self.find(timeout=1)
+
+        if element:
+            return element.is_enabled()
+
+        return False
+
     def wait_until_not_visible(self, timeout=10):
 
         element = None
@@ -196,6 +206,19 @@ class WebElement(object):
 
         try:
             text = str(element.text)
+        except Exception as e:
+            print('Error: {0}'.format(e))
+
+        return text
+
+    def get_text_index(self):
+        """ Получить текст по индексу. """
+
+        element = self.find()
+        text = ''
+
+        try:
+            text = tuple(element.text.split())
         except Exception as e:
             print('Error: {0}'.format(e))
 

@@ -5,6 +5,8 @@ import allure
 from Alexey_Zabrodsky.diplom_2.pages.locators.header_page_locators import HeaderBtn
 from Alexey_Zabrodsky.diplom_2.pages.locators.futer_page_locators import FuterBtn
 from Alexey_Zabrodsky.diplom_2.pages.locators.сatalog_page_locators import CatalogBtn
+from Alexey_Zabrodsky.diplom_2.pages.locators.home_page_locators import HomeBtn
+from Alexey_Zabrodsky.diplom_2.pages.locators.korzina_page_locators import KorzinaBtn
 from Alexey_Zabrodsky.diplom_2.conftest import web_browser
 
 
@@ -1438,6 +1440,8 @@ def test_catalog_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/catalog/5386')
             check.is_true(page.button_utsenonnyye_tovary.wait_for_visibility())
             check.is_true(page.button_utsenonnyye_tovary.wait_to_be_clickable())
+
+
 # <-----------------------------------------Left menu--------------------------------------------->
 @allure.feature('Смоук тест')
 @allure.story('Имитация скролла в низ экрана и нажатия кнопок Left menu')
@@ -1466,6 +1470,7 @@ def test_left_menu_btn(web_browser):
             check.equal(page1, 'https://www.dollar.by/news')
             check.is_true(page.button_vse_novosti.wait_for_visibility())
             check.is_true(page.button_vse_novosti.wait_to_be_clickable())
+
 
 # <--------------------------------------------ПОИСК---------------------------------------------->
 @allure.feature('Смоук тест')
@@ -1504,4 +1509,185 @@ def test_poisk(web_browser):
             page.input_poisk.send_keys('Кот')
             page.button_poisk.click()
             check.not_equal(page.assert_poisk.count(), 0)
+
+
+# <-------------------------------------Домашняя страница----------------------------------------->
+@allure.feature('Смоук тест')
+@allure.story('Имитация скролла в низ экрана и нажатия кнопок слайдера')
+def test_home_slider(web_browser):
+    """ Убеждаемся, что кнопки слайдера
+        кликабельные и переход слайдов корректный. """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Проверка кнопок слайдера"):
+        check.is_true(page.slider_1.wait_for_visibility())
+        check.is_true(page.slider_1.wait_to_be_clickable())
+        check.is_true(page.slider_1.is_enabled())
+        page.slider_2.click()
+        check.is_true(page.slider_2.wait_for_visibility())
+        check.is_true(page.slider_2.wait_to_be_clickable())
+        check.is_true(page.slider_2.is_enabled())
+        page.slider_3.click()
+        check.is_true(page.slider_3.wait_for_visibility())
+        check.is_true(page.slider_3.wait_to_be_clickable())
+        check.is_true(page.slider_3.is_enabled())
+        page.slider_4.click()
+        check.is_true(page.slider_4.wait_for_visibility())
+        check.is_true(page.slider_4.wait_to_be_clickable())
+        check.is_true(page.slider_4.is_enabled())
+        page.slider_5.click()
+        check.is_true(page.slider_5.wait_for_visibility())
+        check.is_true(page.slider_5.wait_to_be_clickable())
+        check.is_true(page.slider_5.is_enabled())
+
+
+@allure.feature('Смоук тест')
+@allure.story('Имитация скролла в низ экрана и нажатия кнопок слайдера')
+def test_home_korzina(web_browser):
+    """ Убеждаемся, что добавленный товар отображается
+        количество и сумма """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Проверка кнопки 'Добавить в корзину' и отображения товара в корзине."):
+        if check.equal(page.button_dobavit_v_korzinu.get_text(), 'В корзину'):
+            check.equal(page.button_dobavit_v_korzinu.get_attribute('title'),
+                            'Добавить в корзину')
+            check.is_true(page.button_dobavit_v_korzinu.wait_for_visibility())
+            check.is_true(page.button_dobavit_v_korzinu.wait_to_be_clickable())
+            page.button_dobavit_v_korzinu.click()
+            page1 = page.get_current_url()
+            check.equal(page1, 'https://www.dollar.by/shopcart')
+            check.not_equal(page.koll_tovara.get_text(), '0')
+            check.not_equal(page.sum_tovara.get_text(), '0')
+            page.go_back()
+            page.scroll_up()
+            check.greater(page.home_koll_tovarov.get_text(), '0')
+            check.greater(page.home_sum_tovarov.get_text(), '0')
+
+
+@allure.feature('Смоук тест')
+@allure.story('Имитация скролла в низ экрана и нажатия кнопоки заказать')
+def test_home_zakazat(web_browser):
+    """ Убеждаемся, что ссылка/кнопка заказать
+        кликабельные и переход на страницу корректный. """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Проверка кнопки 'Заказать'"):
+        if check.equal(page.button_zakazat.get_text(), 'Заказать'):
+            check.is_true(page.button_zakazat.wait_for_visibility())
+            check.is_true(page.button_zakazat.wait_to_be_clickable())
+            page.button_zakazat.click()
+            check.equal(page.assert_zakazati_okno.get_text(), 'Заполните форму заказа')
+
+
+@allure.feature('Смоук тест')
+@allure.story('Имитация скролла в низ экрана и нажатия кнопоки заказать')
+def test_home_zakazat_form(web_browser):
+    """ Убеждаемся, что форма заказать работает корректно. """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Заполнение формы заказать'"):
+        if check.equal(page.button_zakazat.get_text(), 'Заказать'):
+            page.button_zakazat.click()
+            check.equal(page.assert_zakazati_okno.get_text(), 'Заполните форму заказа')
+            page.name_form.send_keys('Andrew')
+            page.numbers.send_keys('999999999')
+            check.is_true(page.btn_zakazat.wait_for_visibility())
+            check.is_true(page.btn_zakazat.wait_to_be_clickable())
+            page.btn_zakazat.click()
+            check.equal(page.assert_zakazati.get_text(), 'Спасибо! Ваш заказ принят!')
+
+
+# <----------------------------------------КОРЗИНА------------------------------------------------>
+@allure.feature('Смоук тест')
+@allure.story('Проверка формы заказа в корзине')
+def test_korzina_form(web_browser):
+    """ Убеждаемся, что форма заказа заполняется и отсылается """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Проверка формы заказа товара через корзину"):
+        if check.equal(page.button_dobavit_v_korzinu.get_text(), 'В корзину'):
+            check.equal(page.button_dobavit_v_korzinu.get_attribute('title'),
+                        'Добавить в корзину')
+            check.is_true(page.button_dobavit_v_korzinu.wait_for_visibility())
+            check.is_true(page.button_dobavit_v_korzinu.wait_to_be_clickable())
+            tovar = page.assert_tovar.get_text()
+            page.button_dobavit_v_korzinu.click()
+            check.is_true(page.button_info.wait_for_visibility())
+            check.is_true(page.button_info.wait_to_be_clickable())
+            page.button_info.click()
+            check.equal(page.assert_info.get_text(), 'Для оформления заказа заполните пожалуйста '
+                                                     'форму с контактными данными НИЖЕ.')
+            check.equal(tovar, page.assert_tovar_korzina.get_text())
+            page.button_samovyvoz.click()
+            check.is_true(page.button_samovyvoz.is_selected())
+            page.button_dostavka.click()
+            check.is_true(page.button_dostavka.is_selected())
+            page.button_belpochta.click()
+            check.is_true(page.button_belpochta.is_selected())
+            page.button_cards.click()
+            check.is_true(page.button_cards.is_selected())
+            page.button_nalichnymi.click()
+            check.is_true(page.button_nalichnymi.is_selected())
+            page.input_name.send_keys('Alexey')
+            page.input_number.send_keys('999999999')
+            page.input_adress.send_keys('Minsk')
+            page.input_comment.send_keys('Thanks')
+            page.button_person_inf.click()
+            check.is_true(page.button_person_inf.is_selected())
+            check.is_true(page.button_podtverdit_zakaz.wait_for_visibility())
+            check.is_true(page.button_podtverdit_zakaz.wait_to_be_clickable())
+            check.equal(page.button_podtverdit_zakaz.get_attribute('value'), 'Подтвердить заказ')
+            page.button_podtverdit_zakaz.click()
+            check.equal(page.assert_vash_zakaz.get_text(), 'Благодарим Вас за заказ!')
+
+
+@allure.feature('Смоук тест')
+@allure.story('Проверка формы заказа в корзине')
+def test_korzina_form_2(web_browser):
+    """ Убеждаемся, что сумма изменяется в зависимости от смены параметров """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Проверка параметров при заказе товара"):
+        if check.equal(page.button_dobavit_v_korzinu.get_text(), 'В корзину'):
+            check.equal(page.button_dobavit_v_korzinu.get_attribute('title'),
+                        'Добавить в корзину')
+            page.button_dobavit_v_korzinu.click()
+            page.button_samovyvoz.click()
+            check.equal(page.assert_price.get_text_index()[0],
+                        page.assert_itogo.get_text_index()[0])
+            check.equal(page.assert_itogo.get_text_index()[0],
+                        page.assert_koll_header.get_text_index()[0])
+            page.button_dostavka.click()
+            check.equal(page.assert_itogo.get_text_index()[0],
+                        page.assert_koll_header.get_text_index()[0])
+            page.button_belpochta.click()
+            check.equal(page.assert_itogo.get_text_index()[0],
+                        page.assert_koll_header.get_text_index()[0])
+            page.button_samovyvoz.click()
+            page.assert_koll.send_keys("2")
+            check.equal(page.assert_itogo.get_text_index()[0],
+                        page.assert_koll_header.get_text_index()[0])
+
+
+@allure.feature('Смоук тест')
+@allure.story('Удаление из корзины товара')
+def test_korzina_form(web_browser):
+    """ Убеждаемся, что товар удаляется с корзины """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Удалить товар с корзины"):
+        if check.equal(page.button_dobavit_v_korzinu.get_text(), 'В корзину'):
+            page.button_dobavit_v_korzinu.click()
+            check.is_true(page.button_delet.wait_for_visibility())
+            check.is_true(page.button_delet.wait_to_be_clickable())
+            page.button_delet.click()
+            check.equal(page.assert_delet.get_text(), 'В Вашей корзине еще нет товаров.')
 
