@@ -19,6 +19,21 @@ def test_header_btn(web_browser):
     page = HeaderBtn(web_browser)
 
     with allure.step("Проверка кнопки 'О магазине'"):
+        # elements = [('О магазине', page.button_o_magazine, 'https://www.dollar.by/about'),
+        #             ('Доставка и оплата', page.button_dostavka_i_oplata, 'https://www.dollar.by/orders'),
+        #             ('Гарантия', page.button_garantiya, 'https://www.dollar.by/garantiya'),
+        #             ('Корзина:', page.button_korzina, 'https://www.dollar.by/shopcart'),
+        #             ]
+        #
+        # for name, elem, url in elements:
+        #     if check.equal(elem.get_text(), name):
+        #         check.equal(elem.get_attribute('href'), url)
+        #         elem.click()
+        #         page1 = page.get_current_url()
+        #         check.equal(page1, url)
+        #         check.is_true(elem.wait_for_visibility())
+        #         check.is_true(elem.wait_to_be_clickable())
+        #
         if check.equal(page.button_o_magazine.get_text(), 'О магазине'):
             check.equal(page.button_o_magazine.get_attribute('href'),
                         'https://www.dollar.by/about')
@@ -139,7 +154,7 @@ def test_header_numbers(web_browser):
             check.is_true(page.number_mts_mini.wait_for_visibility())
             check.equal(num, page.number_mts_mini.get_attribute('title'))
 
-    with allure.step("Проверка номера 'mts' Header and Header-mini"):
+    with allure.step("Проверка номера 'city' Header and Header-mini"):
         if check.equal(page.number_city.get_attribute('title'), '+375172423777'):
             check.is_true(page.number_city.wait_for_visibility())
             num = page.number_city.get_attribute('title')
@@ -1692,31 +1707,32 @@ def test_korzina_delet(web_browser):
 
 
 # <-----------------------------Форма оставить коментарий----------------------------------------->
-# @allure.feature('Смоук тест')
-# @allure.story('Имитация скролла в низ экрана и проверка формы отзыва о товаре')
-# def test_form_otziv(web_browser):
-#     """ Убеждаемся, что форма оcтавить отзыв работает. """
-#
-#     page = HomeBtn(web_browser)
-#
-#     with allure.step("Проверка формы оставить отзыв о товаре"):
-#         if check.equal(page.slider_tovar.get_text(), 'Электрический измельчитель Молния '
-#                                                      'Cупретто Supretto'):
-#             check.equal(page.slider_tovar.get_attribute('href'),
-#                         'https://www.dollar.by/catalog/Tovary_dlya_kukhni/'
-#                         '937/Elektricheskiy-izmelchitel-Supretto')
-#             check.is_true(page.slider_tovar.wait_for_visibility())
-#             check.is_true(page.slider_tovar.wait_to_be_clickable())
-#             page.slider_tovar.click()
-#             page1 = page.get_current_url()
-#             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/937/'
-#                                'Elektricheskiy-izmelchitel-Supretto')
-#             page.dobavit_otziv.click()
-#             page.name_otziv.send_keys('Alexey')
-#             page.title_otziv.send_keys('Хороший товар')
-#             my_tuple = page.text_otziv_span.get_text_index()[2:4]
-#             result_str = ' '.join(map(str, my_tuple))
-#             result_int = int(result_str)
-#             print(result_int)
+@allure.feature('Смоук тест')
+@allure.story('Имитация скролла в низ экрана и проверка формы отзыва о товаре')
+def test_form_otziv(web_browser):
+    """ Убеждаемся, что форма оcтавить отзыв работает. """
+
+    page = HomeBtn(web_browser)
+
+    with allure.step("Проверка формы оставить отзыв о товаре"):
+        if check.equal(page.slider_tovar.get_text(), 'Электрический измельчитель Молния '
+                                                     'Cупретто Supretto'):
+            # check.equal(page.slider_tovar.get_attribute('href'),
+            #             'https://www.dollar.by/catalog/Tovary_dlya_kukhni/'
+            #             '937/Elektricheskiy-izmelchitel-Supretto')
+            # check.is_true(page.slider_tovar.wait_for_visibility())
+            # check.is_true(page.slider_tovar.wait_to_be_clickable())
+            page.slider_tovar.click()
+            # page1 = page.get_current_url()
+            # check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/937/'
+            #                    'Elektricheskiy-izmelchitel-Supretto')
+            page.dobavit_otziv.click()
+            page.name_otziv.send_keys('Alexey')
+            page.title_otziv.send_keys('Хороший товар')
+            my_tuple = page.text_otziv_span.get_text_index()[24]
+            print(my_tuple)
+            # result_str = ' '.join(map(str, my_tuple))
+            # result_int = int(result_str)
+            # print(result_int)
 
 
