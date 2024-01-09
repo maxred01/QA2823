@@ -1620,8 +1620,7 @@ def test_korzina_form(web_browser):
             check.is_true(page.button_info.wait_for_visibility())
             check.is_true(page.button_info.wait_to_be_clickable())
             page.button_info.click()
-            check.equal(page.assert_info.get_text(), 'Для оформления заказа заполните пожалуйста '
-                                                     'форму с контактными данными НИЖЕ.')
+            check.equal(page.assert_info.get_text(), 'Для оформления заказа заполните пожалуйста форму с контактными данными НИЖЕ.')
             check.equal(tovar, page.assert_tovar_korzina.get_text())
             page.button_samovyvoz.click()
             check.is_true(page.button_samovyvoz.is_selected())
@@ -1637,6 +1636,7 @@ def test_korzina_form(web_browser):
             page.input_number.send_keys('999999999')
             page.input_adress.send_keys('Minsk')
             page.input_comment.send_keys('Thanks')
+            time.sleep(4)
             page.button_person_inf.click()
             check.is_true(page.button_person_inf.is_selected())
             check.is_true(page.button_podtverdit_zakaz.wait_for_visibility())
@@ -1677,7 +1677,7 @@ def test_korzina_form_2(web_browser):
 
 @allure.feature('Смоук тест')
 @allure.story('Удаление из корзины товара')
-def test_korzina_form(web_browser):
+def test_korzina_delet(web_browser):
     """ Убеждаемся, что товар удаляется с корзины """
 
     page = HomeBtn(web_browser)
