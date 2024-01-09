@@ -1727,10 +1727,20 @@ def test_form_otziv(web_browser):
             # check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/937/'
             #                    'Elektricheskiy-izmelchitel-Supretto')
             page.dobavit_otziv.click()
-            page.name_otziv.send_keys('Alexey')
-            page.title_otziv.send_keys('Хороший товар')
-            my_tuple = page.text_otziv_span.get_text_index()[24]
-            print(my_tuple)
+            # page.name_otziv.send_keys('Alexey')
+            # page.title_otziv.send_keys('Хороший товар')
+            a = page.text_otziv_span.get_text_index()[2]
+            b = page.text_otziv_span.get_text_index()[3]
+            c = page.text_otziv_span.get_text_index()[4]
+
+            n = c.replace('?', '')
+
+            result = f"{a}{b}{n}"
+
+
+
+            # a = page.text_otziv_span.get_text_index()[2:5]
+            print(int(result))
             # result_str = ' '.join(map(str, my_tuple))
             # result_int = int(result_str)
             # print(result_int)

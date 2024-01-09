@@ -224,6 +224,19 @@ class WebElement(object):
 
         return text
 
+    def get_text_str(self):
+        """ Получить текст по индексу. """
+
+        element = self.find()
+        text = []
+
+        try:
+            text = str(element.text.split())
+        except Exception as e:
+            print('Error: {0}'.format(e))
+
+        return text
+
     def get_attribute(self, attr_name):
         """ Получить атрибут элемента. """
 
