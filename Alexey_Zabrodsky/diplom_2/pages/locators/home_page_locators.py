@@ -35,7 +35,7 @@ class HomeBtn(WebPage):
     assert_zakazati = WebElement(css_selector='div.modal__window__title')
 
 # <-------КОРЗИНА--------------->
-    slider_1 = WebElement(css_selector='div.block__slider_and_day_offer__slider')
+    slider_home = WebElement(css_selector='div.block__slider_and_day_offer__slider')
     button_info = WebElement(css_selector='div.page__shopcart__delivery_info__title__wrapper')
     assert_info = WebElement(css_selector='div.page__shopcart__delivery_info__body__wrapper '
                                           'p:nth-of-type(1)')
@@ -68,3 +68,12 @@ class HomeBtn(WebPage):
     assert_price = WebElement(css_selector='tr.cart-order td.page__shopcart__table__body__price')
     assert_koll = WebElement(css_selector='div.form-item.form-item-quantity input')
     assert_koll_header = WebElement(css_selector='div.header div.header__shopcart__price')
+    # <---Проверка формы оставить отзыв--->
+    slider_tovar = WebElement(css_selector='div.teaser__catitem.teaser__catitem__day_product'
+                                           '>div>div>div:nth-of-type(4) a')
+    dobavit_otziv = WebElement(css_selector='span.expand-review-form')
+    name_otziv = WebElement(css_selector='input#id_review-username')
+    title_otziv = WebElement(css_selector='[name="review-text"]')
+    ball_otziv = WebElement(css_selector='select#id_review-rating')
+    text_otziv_span = WebElement(css_selector='span.captcha-question')
+    otpravit_otziv = WebElement(css_selector='div.form__item.form__button > input')

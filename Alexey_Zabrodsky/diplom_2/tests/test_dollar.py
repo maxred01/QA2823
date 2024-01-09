@@ -6,7 +6,6 @@ from Alexey_Zabrodsky.diplom_2.pages.locators.header_page_locators import Header
 from Alexey_Zabrodsky.diplom_2.pages.locators.futer_page_locators import FuterBtn
 from Alexey_Zabrodsky.diplom_2.pages.locators.сatalog_page_locators import CatalogBtn
 from Alexey_Zabrodsky.diplom_2.pages.locators.home_page_locators import HomeBtn
-from Alexey_Zabrodsky.diplom_2.pages.locators.korzina_page_locators import KorzinaBtn
 from Alexey_Zabrodsky.diplom_2.conftest import web_browser
 
 
@@ -1690,4 +1689,34 @@ def test_korzina_form(web_browser):
             check.is_true(page.button_delet.wait_to_be_clickable())
             page.button_delet.click()
             check.equal(page.assert_delet.get_text(), 'В Вашей корзине еще нет товаров.')
+
+
+# <-----------------------------Форма оставить коментарий----------------------------------------->
+# @allure.feature('Смоук тест')
+# @allure.story('Имитация скролла в низ экрана и проверка формы отзыва о товаре')
+# def test_form_otziv(web_browser):
+#     """ Убеждаемся, что форма оcтавить отзыв работает. """
+#
+#     page = HomeBtn(web_browser)
+#
+#     with allure.step("Проверка формы оставить отзыв о товаре"):
+#         if check.equal(page.slider_tovar.get_text(), 'Электрический измельчитель Молния '
+#                                                      'Cупретто Supretto'):
+#             check.equal(page.slider_tovar.get_attribute('href'),
+#                         'https://www.dollar.by/catalog/Tovary_dlya_kukhni/'
+#                         '937/Elektricheskiy-izmelchitel-Supretto')
+#             check.is_true(page.slider_tovar.wait_for_visibility())
+#             check.is_true(page.slider_tovar.wait_to_be_clickable())
+#             page.slider_tovar.click()
+#             page1 = page.get_current_url()
+#             check.equal(page1, 'https://www.dollar.by/catalog/Tovary_dlya_kukhni/937/'
+#                                'Elektricheskiy-izmelchitel-Supretto')
+#             page.dobavit_otziv.click()
+#             page.name_otziv.send_keys('Alexey')
+#             page.title_otziv.send_keys('Хороший товар')
+#             my_tuple = page.text_otziv_span.get_text_index()[2:4]
+#             result_str = ' '.join(map(str, my_tuple))
+#             result_int = int(result_str)
+#             print(result_int)
+
 
