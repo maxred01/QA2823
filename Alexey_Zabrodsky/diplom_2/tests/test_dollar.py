@@ -1736,6 +1736,8 @@ def test_form_otziv(web_browser):
             n = c.replace('?', '')
 
             result = f"{a}{b}{n}"
+            z = eval(result)
+            print()
 
 
 
