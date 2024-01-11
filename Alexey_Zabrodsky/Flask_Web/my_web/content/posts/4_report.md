@@ -32,5 +32,5 @@ Django ORM (Object Relational Mapping) является одной из самы
 	    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 	    authors = models.ManyToManyField(Author, related_name="posts")
 
-<a href="/run" class="gradient-button" target="_blank">Button</a>
+<a href="./run" class="gradient-button" target="_blank">Button</a>
 
